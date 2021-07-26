@@ -72,22 +72,22 @@
         </div>
         <div class="col-lg-8 col-md-12">
             <div class="row">
-                @foreach ($data as $i => $val)
-                    @if ($val->hari == 'Senin')
-                        <div class="col-lg-6 col-md-12 mt-4">
-                            <div class="card">
-                                <div class="card-body p-3">
-                                    <h4>{{ $val->hari }}</h4>
-                                    <div class="table-responsive">
-                                        <table class="table table-sm">
-                                            <thead>
-                                                <tr>
-                                                    <th>No</th>
-                                                    <th>Warga</th>
-                                                    <th>Aksi</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
+                <div class="col-lg-6 col-md-12 mt-4">
+                    <div class="card">
+                        <div class="card-body p-3">
+                            <h4>Senin</h4>
+                            <div class="table-responsive">
+                                <table class="table table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Warga</th>
+                                            <th>Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($data as $i => $val)
+                                            @if ($val->hari == 'Senin')
 
                                                 <tr>
                                                     <td>{{ ++$i }}</td>
@@ -103,64 +103,30 @@
                                                                 class="far fa-trash-alt me-2"></i></a>
                                                     </td>
                                                 </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
+                                            @endif
+                                        @endforeach
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
-                    @elseif($val->hari == 'Selasa')
-
-                        <div class="col-lg-6 col-md-12 mt-4">
-                            <div class="card">
-                                <div class="card-body p-3">
-                                    <h4>{{ $val->hari }}</h4>
-                                    <div class="table-responsive">
-                                        <table class="table table-sm">
-                                            <thead>
-                                                <tr>
-                                                    <th>No</th>
-                                                    <th>Warga</th>
-                                                    <th>Aksi</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-
-                                                <tr>
-                                                    <td>{{ ++$i }}</td>
-                                                    <td>{{ $val->to_warga->nama }}</td>
-                                                    <td>
-                                                        <button type="submit"
-                                                            class="btn btn-link text-dark text-gradient px-3 mb-0 editronda"
-                                                            data-id="{{ $val->id }}"><i
-                                                                class="fas fa-pencil-alt text-dark me-2"
-                                                                aria-hidden="true"></i></button>
-                                                        <a class="btn btn-link text-danger text-gradient px-3 mb-0"
-                                                            href="{{ route('rumah.destroy', $val->id) }}"><i
-                                                                class="far fa-trash-alt me-2"></i></a>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @elseif($val->hari == 'Rabu')
-                        <div class="col-lg-6 col-md-12 mt-4">
-                            <div class="card">
-                                <div class="card-body p-3">
-                                    <h4>{{ $val->hari }}</h4>
-                                    <div class="table-responsive">
-                                        <table class="table table-sm">
-                                            <thead>
-                                                <tr>
-                                                    <th>No</th>
-                                                    <th>Warga</th>
-                                                    <th>Aksi</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 mt-4">
+                    <div class="card">
+                        <div class="card-body p-3">
+                            <h4>Selasa</h4>
+                            <div class="table-responsive">
+                                <table class="table table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Warga</th>
+                                            <th>Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($data as $i => $val)
+                                            @if ($val->hari == 'Selasa')
 
                                                 <tr>
                                                     <td>{{ ++$i }}</td>
@@ -176,27 +142,30 @@
                                                                 class="far fa-trash-alt me-2"></i></a>
                                                     </td>
                                                 </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
+                                            @endif
+                                        @endforeach
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
-                    @elseif($val->hari == 'Kamis')
-                        <div class="col-lg-6 col-md-12 mt-4">
-                            <div class="card">
-                                <div class="card-body p-3">
-                                    <h4>{{ $val->hari }}</h4>
-                                    <div class="table-responsive">
-                                        <table class="table table-sm">
-                                            <thead>
-                                                <tr>
-                                                    <th>No</th>
-                                                    <th>Warga</th>
-                                                    <th>Aksi</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 mt-4">
+                    <div class="card">
+                        <div class="card-body p-3">
+                            <h4>Rabu</h4>
+                            <div class="table-responsive">
+                                <table class="table table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Warga</th>
+                                            <th>Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($data as $i => $val)
+                                            @if ($val->hari == 'Rabu')
 
                                                 <tr>
                                                     <td>{{ ++$i }}</td>
@@ -212,63 +181,30 @@
                                                                 class="far fa-trash-alt me-2"></i></a>
                                                     </td>
                                                 </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
+                                            @endif
+                                        @endforeach
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
-                    @elseif($val->hari == 'Jumat')
-                        <div class="col-lg-6 col-md-12 mt-4">
-                            <div class="card">
-                                <div class="card-body p-3">
-                                    <h4>{{ $val->hari }}</h4>
-                                    <div class="table-responsive">
-                                        <table class="table table-sm">
-                                            <thead>
-                                                <tr>
-                                                    <th>No</th>
-                                                    <th>Warga</th>
-                                                    <th>Aksi</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-
-                                                <tr>
-                                                    <td>{{ ++$i }}</td>
-                                                    <td>{{ $val->to_warga->nama }}</td>
-                                                    <td>
-                                                        <button type="submit"
-                                                            class="btn btn-link text-dark text-gradient px-3 mb-0 editronda"
-                                                            data-id="{{ $val->id }}"><i
-                                                                class="fas fa-pencil-alt text-dark me-2"
-                                                                aria-hidden="true"></i></button>
-                                                        <a class="btn btn-link text-danger text-gradient px-3 mb-0"
-                                                            href="{{ route('rondaa.destroy', $val->id) }}"><i
-                                                                class="far fa-trash-alt me-2"></i></a>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @elseif($val->hari == 'Sabtu')
-                        <div class="col-lg-6 col-md-12 mt-4">
-                            <div class="card">
-                                <div class="card-body p-3">
-                                    <h4>{{ $val->hari }}</h4>
-                                    <div class="table-responsive">
-                                        <table class="table table-sm">
-                                            <thead>
-                                                <tr>
-                                                    <th>No</th>
-                                                    <th>Warga</th>
-                                                    <th>Aksi</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 mt-4">
+                    <div class="card">
+                        <div class="card-body p-3">
+                            <h4>Kamis</h4>
+                            <div class="table-responsive">
+                                <table class="table table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Warga</th>
+                                            <th>Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($data as $i => $val)
+                                            @if ($val->hari == 'Kamis')
 
                                                 <tr>
                                                     <td>{{ ++$i }}</td>
@@ -284,27 +220,30 @@
                                                                 class="far fa-trash-alt me-2"></i></a>
                                                     </td>
                                                 </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
+                                            @endif
+                                        @endforeach
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
-                    @elseif($val->hari == 'Minggu')
-                        <div class="col-lg-6 col-md-12 mt-4">
-                            <div class="card">
-                                <div class="card-body p-3">
-                                    <h4>{{ $val->hari }}</h4>
-                                    <div class="table-responsive">
-                                        <table class="table table-sm">
-                                            <thead>
-                                                <tr>
-                                                    <th>No</th>
-                                                    <th>Warga</th>
-                                                    <th>Aksi</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 mt-4">
+                    <div class="card">
+                        <div class="card-body p-3">
+                            <h4>Jumat</h4>
+                            <div class="table-responsive">
+                                <table class="table table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Warga</th>
+                                            <th>Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($data as $i => $val)
+                                            @if ($val->hari == 'Jumat')
 
                                                 <tr>
                                                     <td>{{ ++$i }}</td>
@@ -320,14 +259,93 @@
                                                                 class="far fa-trash-alt me-2"></i></a>
                                                     </td>
                                                 </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
+                                            @endif
+                                        @endforeach
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
-                    @endif
-                @endforeach
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 mt-4">
+                    <div class="card">
+                        <div class="card-body p-3">
+                            <h4>Sabtu</h4>
+                            <div class="table-responsive">
+                                <table class="table table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Warga</th>
+                                            <th>Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($data as $i => $val)
+                                            @if ($val->hari == 'Sabtu')
+
+                                                <tr>
+                                                    <td>{{ ++$i }}</td>
+                                                    <td>{{ $val->to_warga->nama }}</td>
+                                                    <td>
+                                                        <button type="submit"
+                                                            class="btn btn-link text-dark text-gradient px-3 mb-0 editronda"
+                                                            data-id="{{ $val->id }}"><i
+                                                                class="fas fa-pencil-alt text-dark me-2"
+                                                                aria-hidden="true"></i></button>
+                                                        <a class="btn btn-link text-danger text-gradient px-3 mb-0"
+                                                            href="{{ route('rumah.destroy', $val->id) }}"><i
+                                                                class="far fa-trash-alt me-2"></i></a>
+                                                    </td>
+                                                </tr>
+                                            @endif
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 mt-4">
+                    <div class="card">
+                        <div class="card-body p-3">
+                            <h4>Minggu</h4>
+                            <div class="table-responsive">
+                                <table class="table table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Warga</th>
+                                            <th>Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($data as $i => $val)
+                                            @if ($val->hari == 'Minggu')
+
+                                                <tr>
+                                                    <td>{{ ++$i }}</td>
+                                                    <td>{{ $val->to_warga->nama }}</td>
+                                                    <td>
+                                                        <button type="submit"
+                                                            class="btn btn-link text-dark text-gradient px-3 mb-0 editronda"
+                                                            data-id="{{ $val->id }}"><i
+                                                                class="fas fa-pencil-alt text-dark me-2"
+                                                                aria-hidden="true"></i></button>
+                                                        <a class="btn btn-link text-danger text-gradient px-3 mb-0"
+                                                            href="{{ route('rumah.destroy', $val->id) }}"><i
+                                                                class="far fa-trash-alt me-2"></i></a>
+                                                    </td>
+                                                </tr>
+                                            @endif
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>

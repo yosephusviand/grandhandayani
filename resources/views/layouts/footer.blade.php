@@ -11,11 +11,17 @@
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 <script>
+    $('.change-date').change(function() {
+        $(this).closest("form").submit();
+    });
+</script>
+
+<script>
     $(document).ready(function() {
         $('#rumah').DataTable();
         $('.select2').select2();
 
-        $('#tanggal').change(function() {
+        $('#tanggal1').change(function() {
             var tanggal = $(this).val();
             $.ajaxSetup({
                 headers: {

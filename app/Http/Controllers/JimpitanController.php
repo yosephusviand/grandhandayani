@@ -15,7 +15,7 @@ class JimpitanController extends Controller
 
     public function index(Request $request)
     {
-        $tanggal    = date('Y-m-d');
+        $tanggal    =   $request->taggal ?? date('Y-m-d');
         $warga      =   Warga::whereNotIn('id', Jimpitan::select('warga')->where('tanggal', $tanggal))->get();
 
         $jimpitan   =   Jimpitan::all();

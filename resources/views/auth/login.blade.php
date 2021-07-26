@@ -67,7 +67,7 @@
                                     <div class="col-md-12">
                                         <input id="email" type="email"
                                             class="form-control @error('email') is-invalid @enderror" name="email"
-                                            value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                            value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Email">
                                         @error('email')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -79,7 +79,7 @@
                                     <div class="col-md-12">
                                         <input id="password" type="password"
                                             class="form-control @error('password') is-invalid @enderror" name="password"
-                                            required autocomplete="current-password">
+                                            required autocomplete="current-password" placeholder="Password">
 
                                         @error('password')
                                             <span class="invalid-feedback" role="alert">
@@ -98,8 +98,8 @@
                                     <button type="submit" class="btn bg-gradient-info w-100 mt-4 mb-0">Login</button>
                                 </div>
                                 <div class="bottom">
-                                    <span class="helper-text m-b-10"><i class="fa fa-lock"></i> <a href="{{ route('password.request') }}">Lupa Password?</a></span>
-                                    <span>Don't have an account? <a href="{{ route('register') }}">Register</a></span>
+                                    <span class="helper-text m-b-10 mt-3"><i class="fa fa-lock"></i> <a href="{{ route('password.request') }}">Lupa Password?</a></span>
+                                    <span class="mt-3">Don't have an account? <a href="{{ route('register') }}">Register</a></span>
                                 </div>
                             </form>
                         </div>

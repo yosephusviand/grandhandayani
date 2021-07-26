@@ -84,10 +84,13 @@
                         @csrf
                         <input type="hidden" name="idedit" id="idedit" value="">
                         <div class="form-group">
-                            <label for="">Tanggal</label>
-                            <input type="date" name="tanggal" class="form-control" id="tanggal" placeholder="Tuliskan "
-                                value="{{ $tanggal }}" autocomplete="off">
-                            @error('tanggal') <div class="small text-danger">{{ message }}</div> @enderror
+                            <form action="{{ route('jimpitan') }}" method="GET">
+                                @csrf
+                                <label for="">Tanggal</label>
+                                <input type="date" name="tanggal" class="form-control change-date" id="tanggal"
+                                    placeholder="Tuliskan " value="{{ $tanggal }}" autocomplete="off">
+                                @error('tanggal') <div class="small text-danger">{{ message }}</div> @enderror
+                            </form>
                         </div>
 
                         <div class="form-group">
@@ -131,8 +134,8 @@
                                 @foreach ($jimpitan as $i => $val)
                                     <tr>
                                         <td>{{ ++$i }}</td>
-                                        <td>{{ $val->to_warga->to_rumah->nama }} - {{ $val->to_warga->norumah }}</td>
-                                        <td>{{ $val->to_warga->nama }}</td>
+                                        <td>{{ $val->to_warga->to_rumah->nama ?? ''}} - {{ $val->to_warga->norumah  ?? ''}}</td>
+                                        <td>{{ $val->to_warga->nama ?? ''}}</td>
                                         <td>{{ $val->tanggal }}</td>
                                         <td>{{ $val->nominal }}</td>
                                         <td>

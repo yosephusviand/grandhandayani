@@ -143,10 +143,10 @@
 
             <nav id="navbar" class="navbar">
                 <ul>
-                    <li><a class="nav-link scrollto active" href="{{ url('/') }}">Home</a></li>
+                    <li><a class="nav-link scrollto {{ request()->is('/') ? 'active' : '' }}" href="{{ url('/') }}">Home</a></li>
                     <li><a class="nav-link scrollto" href="#">Warga</a></li>
                     <li><a class="nav-link scrollto" href="#">Kegiatan</a></li>
-                    <li><a class="nav-link scrollto" href="{{ route('ronda') }}">Ronda</a></li>
+                    <li><a class="nav-link scrollto {{ request()->is('ronda*') ? 'active' : '' }}" href="{{ route('ronda') }}">Ronda</a></li>
                     <li><a class="nav-link scrollto" href="{{ route('login') }}">Login</a></li>
                     <li><a class="nav-link scrollto" href="{{ route('register') }}">Register</a></li>
                 </ul>
