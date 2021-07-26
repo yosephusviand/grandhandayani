@@ -21,7 +21,7 @@
         $('#rumah').DataTable();
         $('.select2').select2();
 
-        $('#tanggal1').change(function() {
+        $('#tanggal').change(function() {
             var tanggal = $(this).val();
             $.ajaxSetup({
                 headers: {
