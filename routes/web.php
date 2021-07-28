@@ -19,6 +19,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('generate-pdf/{id}', [App\Http\Controllers\PDFController::class, 'generatePDF'])->name('pdf');
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/rumah', [App\Http\Controllers\RumahController::class, 'index'])->name('rumah');

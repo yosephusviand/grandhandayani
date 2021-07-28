@@ -32,7 +32,7 @@
         </div>
     </nav>
     <div class="row">
-        <div class="col-lg-4 col-md-12">
+        <div class="col-lg-4 col-md-12 mt-4">
             <div class="card">
                 <div class="card-body p-3">
                     <form action="{{ route('warga.store') }}" method="POST">
@@ -92,6 +92,10 @@
                                         <td>{{ $val->norumah }}</td>
                                         <td>{{ $val->nama }}</td>
                                         <td>
+                                            <button type="button" class="btn btn-link text-dark text-gradient px-3 mb-0" data-bs-toggle="modal" data-bs-target="#modal{{ $val->id }}">
+                                                <i class="fas fa-eye text-dark me-2"
+                                                    aria-hidden="true"></i>
+                                            </button>
                                             <button type="submit"
                                                 class="btn btn-link text-dark text-gradient px-3 mb-0 editwarga"
                                                 data-id="{{ $val->id }}"><i class="fas fa-pencil-alt text-dark me-2"
@@ -101,6 +105,25 @@
                                                     class="far fa-trash-alt me-2"></i></a>
                                         </td>
                                     </tr>
+                                    <div class="modal fade" id="modal{{ $val->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">QR Code</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="form-group text-center">
+                                                        {!! QrCode::size(200)->generate($val->id) !!}
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                    <a href="{{ route('pdf', $val->id) }}" class="btn btn-primary">Download</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 @endforeach
                             </tbody>
                         </table>
@@ -108,6 +131,5 @@
                 </div>
             </div>
         </div>
-    </div>
 
     @include('layouts.footer')
