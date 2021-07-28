@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Models\Warga;
 use Illuminate\Http\Request;
-use PDF;
+use Barryvdh\DomPDF\Facade as PDF;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class PDFController extends Controller
