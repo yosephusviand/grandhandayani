@@ -114,7 +114,11 @@
                                                 </div>
                                                 <div class="modal-body">
                                                     <div class="form-group text-center">
-                                                        {!! QrCode::size(200)->generate($val->id) !!}
+                                                        @php
+                                                            $link = '{{ url("/api/jimpitan", ["warga" => $val->id]) }}';
+
+                                                        @endphp
+                                                        {!! QrCode::size(200)->generate('http://ghr.mervia.my.id/api/jimpitan?warga='.$val->id.'') !!}
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">

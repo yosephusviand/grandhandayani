@@ -10,13 +10,13 @@ use Illuminate\Support\Facades\Auth;
 
 class QrcodeController extends Controller
 {
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
         $data           =   new Jimpitan;
-        $data->warga    =   $request->warga;
+        $data->warga    =   $id;
         $data->tanggal  =   Carbon::now();
         $data->bulan    =   date('m');
-        $data->user     =   $request->iduser;
+        // $data->user     =   $request->iduser;
         $data->save();
 
         $response['meta']["status"]     =   200;
