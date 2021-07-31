@@ -18,7 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('jimpitan',[\App\Http\Controllers\API\QrcodeController::class,'store']);
+Route::post('jimpitan/{id}',[\App\Http\Controllers\API\QrcodeController::class,'store']);
 
 Route::post('login', [\App\Http\Controllers\API\UserController::class, 'login']);
 Route::post('register', [\App\Http\Controllers\API\UserController::class, 'register']);

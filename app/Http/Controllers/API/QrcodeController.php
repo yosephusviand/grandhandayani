@@ -13,7 +13,7 @@ class QrcodeController extends Controller
     public function store(Request $request, $id)
     {
         $data           =   new Jimpitan;
-        $data->warga    =   $request->warga;
+        $data->warga    =   $id;
         $data->tanggal  =   Carbon::now();
         $data->bulan    =   date('m');
         // $data->user     =   $request->iduser;
@@ -23,8 +23,8 @@ class QrcodeController extends Controller
         $response['meta']["message"]    =   "OK";
         $response["response"] =
         [
-            "warga"              =>  $request->warga,
-            "user"               =>  $request->iduser,
+            "warga"              =>  $id,
+            // "user"               =>  $request->iduser,
             "tangal"             =>  Carbon::now(),
         ];
 
