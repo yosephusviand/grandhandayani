@@ -13,7 +13,7 @@ class QrcodeController extends Controller
     public function store(Request $request, $id)
     {
         $data           =   new Jimpitan;
-        $data->warga    =   $id;
+        $data->warga    =   $request->warga;
         $data->tanggal  =   Carbon::now();
         $data->bulan    =   date('m');
         // $data->user     =   $request->iduser;
