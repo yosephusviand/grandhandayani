@@ -10,10 +10,10 @@ use Illuminate\Support\Facades\Auth;
 
 class QrcodeController extends Controller
 {
-    public function store(Request $request, $id)
+    public function store(Request $request)
     {
         $data           =   new Jimpitan;
-        $data->warga    =   $id;
+        $data->warga    =   $request->warga;
         $data->tanggal  =   Carbon::now();
         $data->bulan    =   date('m');
         // $data->user     =   $request->iduser;
@@ -23,7 +23,7 @@ class QrcodeController extends Controller
         $response['meta']["message"]    =   "OK";
         $response["response"] =
         [
-            "warga"              =>  $id,
+            "warga"              =>  $request->warga,
             // "user"               =>  $request->iduser,
             "tangal"             =>  Carbon::now(),
         ];
