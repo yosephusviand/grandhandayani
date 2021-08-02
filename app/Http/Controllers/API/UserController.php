@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\User as ModelsUser;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Validator;
@@ -49,6 +50,12 @@ class UserController extends Controller
     public function details()
     {
         $user = Auth::user();
+        return response()->json(['success' => $user], $this->successStatus);
+    }
+
+    public function user($id)
+    {
+        $user = ModelsUser::find($id);
         return response()->json(['success' => $user], $this->successStatus);
     }
 }
