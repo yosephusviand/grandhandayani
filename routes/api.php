@@ -23,6 +23,7 @@ Route::post('jimpitan',[\App\Http\Controllers\API\QrcodeController::class,'store
 Route::post('login', [\App\Http\Controllers\API\UserController::class, 'login']);
 Route::post('register', [\App\Http\Controllers\API\UserController::class, 'register']);
 Route::get('ronda', [\App\Http\Controllers\API\UserController::class, 'ronda']);
+Route::get('home', [\App\Http\Controllers\API\UserController::class, 'home']);
 
 Route::group(['middleware' => 'auth:api'], function () {
     Route::get('user/{id}', [\App\Http\Controllers\API\UserController::class, 'user']);

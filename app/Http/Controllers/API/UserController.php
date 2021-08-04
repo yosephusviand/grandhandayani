@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Models\Jimpitan;
 use App\Models\Models\Ronda;
 use App\Models\Models\Rumah;
 use App\Models\Models\Warga;
@@ -70,6 +71,18 @@ class UserController extends Controller
                             ->get();
 
 
-        return response()->json(['success' => $data], $this->successStatus);
+        return response()->json(['data' => $data], $this->successStatus);
+    }
+
+    public function home()
+    {
+        $inbulan    =   Jimpitan::sumbulan();
+        $inhari     =   Jimpitan::sumhari();
+        $intahun    =   Jimpitan::sumtahun();
+        $warga      =   Warga::countwarga();
+
+        $data   =   array('inbulan' => $inbulan, 'inhari' => $inhari, 'intahun' => $intahun, 'warga' => $warga);
+
+        return response()->json(['data' => $data], $this->successStatus);
     }
 }
