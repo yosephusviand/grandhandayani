@@ -4,6 +4,9 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Models\Ronda;
+use App\Models\Models\Rumah;
+use App\Models\Models\Warga;
 use App\Models\User as ModelsUser;
 use App\User;
 use Illuminate\Support\Facades\Auth;
@@ -57,5 +60,16 @@ class UserController extends Controller
     {
         $user = ModelsUser::find($id);
         return response()->json(['success' => $user], $this->successStatus);
+    }
+
+    public function ronda()
+    {
+        $data   =   Ronda::select('ronda.hari', 'warga.nama', 'rumah.nama as block','warga.norumah')
+                            ->join('warga', 'ronda.warga', '=', 'warga.id')
+                            ->join('rumah', 'warga.block', '=', 'rumah.id')
+                            ->get();
+
+
+        return response()->json(['success' => $data], $this->successStatus);
     }
 }
