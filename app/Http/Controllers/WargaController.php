@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Models\Rumah;
 use App\Models\Models\Warga;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class WargaController extends Controller
@@ -14,6 +15,8 @@ class WargaController extends Controller
     {
         $block  =   Rumah::all();
         $warga  =   Warga::all();
+        $dancuk =   User::get();
+        dd($dancuk);
         return view('admin.warga', compact('block', 'warga'));
     }
 

@@ -16,7 +16,7 @@ class QrcodeController extends Controller
         $data->warga    =   $request->warga;
         $data->tanggal  =   Carbon::now();
         $data->bulan    =   date('m');
-        // $data->user     =   $request->iduser;
+        $data->user     =   $request->iduser;
         $data->save();
 
         $response['meta']["status"]     =   200;
@@ -24,7 +24,7 @@ class QrcodeController extends Controller
         $response["response"] =
         [
             "warga"              =>  $request->warga,
-            // "user"               =>  $request->iduser,
+            "user"               =>  $request->iduser,
             "tangal"             =>  Carbon::now(),
         ];
 

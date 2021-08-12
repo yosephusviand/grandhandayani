@@ -59,7 +59,8 @@ class UserController extends Controller
 
     public function user($id)
     {
-        $user = ModelsUser::find($id);
+        $user   = ModelsUser::find($id);
+        // $warga  =   Warga::where('')
         return response()->json(['success' => $user], $this->successStatus);
     }
 

@@ -38,6 +38,17 @@
                     <form action="{{ route('warga.store') }}" method="POST">
                         @csrf
                         <input type="hidden" name="idedit" id="idedit" value="">
+                        {{-- <div class="form-group">
+                            <label for="">Username</label>
+                            <select name="iduser" class="form-control select2" id="iduser">
+                                <option value="" disabled selected hidden>Pilih </option>
+                                @foreach ($user as $value)
+                                    <option value="{{ $value->id }}">{{ $value->name }}</option>
+                                @endforeach
+                            </select>
+                            @error("iduser") <div class="small text-danger">{{ message }}</div> @enderror
+                        </div> --}}
+                        
                         <div class="form-group">
                             <label for="">Block</label>
                             <select name="block" class="form-control select2" id="block">
