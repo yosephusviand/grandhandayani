@@ -15,8 +15,8 @@ class WargaController extends Controller
     {
         $block  =   Rumah::all();
         $warga  =   Warga::all();
-        $dancuk =   User::get();
-        
+        $users  =   User::where('account_role', 'user')->get();
+             
         return view('admin.warga', compact('block', 'warga'));
     }
 

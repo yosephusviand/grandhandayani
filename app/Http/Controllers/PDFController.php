@@ -12,10 +12,10 @@ class PDFController extends Controller
     public function generatePDF($id)
     {
         $data = Warga::find($id);
-        $qrcode = base64_encode(QrCode::format('svg')->size(200)->errorCorrection('H')->generate($data->id));
+        $qrcode = base64_encode(QrCode::format('svg')->size(300)->errorCorrection('H')->generate($data->id));
         
         $pdf = PDF::loadView('pdf/qrcode', compact('data', 'qrcode'));
 
-        return $pdf->download($data->nama.'_QRCode.pdf');
+        return $pdf->stream($data->nama.'_QRCode.pdf');
     }
 }

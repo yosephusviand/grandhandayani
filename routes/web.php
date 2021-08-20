@@ -48,3 +48,5 @@ Route::get('/rondaa/delete/{id}', [App\Http\Controllers\RondaController::class, 
 
 Route::get('/ronda', [App\Http\Controllers\UmumController::class,'ronda'])->name('ronda');
 
+Route::get('/profile', [\App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
+Route::post('/profile', [\App\Http\Controllers\ProfileController::class, 'store'])->name('profile.store');

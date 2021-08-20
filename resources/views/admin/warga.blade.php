@@ -129,12 +129,12 @@
                                                             $link = '{{ url("/api/jimpitan", ["warga" => $val->id]) }}';
 
                                                         @endphp
-                                                        {!! QrCode::size(200)->generate($val->id) !!}
+                                                        {!! QrCode::size(300)->generate($val->id) !!}
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                    <a href="{{ route('pdf', $val->id) }}" class="btn btn-primary">Download</a>
+                                                    <a href="{{ route('pdf', $val->id) }}" target="_blank" class="btn btn-primary">Download</a>
                                                 </div>
                                             </div>
                                         </div>

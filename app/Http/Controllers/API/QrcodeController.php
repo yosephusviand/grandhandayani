@@ -12,21 +12,28 @@ class QrcodeController extends Controller
 {
     public function store(Request $request)
     {
-        $data           =   new Jimpitan;
-        $data->warga    =   $request->warga;
-        $data->tanggal  =   Carbon::now();
-        $data->bulan    =   date('m');
-        $data->user     =   $request->iduser;
-        $data->save();
+        $cek            =   Jimpitan::where('warga', $request->warga)->where('tanggal',date('Y-m-d'))->first();
+        
+        if ($cek == null) {
+            $data           =   new Jimpitan;
+            $data->warga    =   $request->warga;
+            $data->tanggal  =   Carbon::now();
+            $data->bulan    =   date('m');
+            $data->user     =   $request->iduser;
+            $data->save();
 
-        $response['meta']["status"]     =   200;
-        $response['meta']["message"]    =   "OK";
-        $response["response"] =
-        [
-            "warga"              =>  $request->warga,
-            "user"               =>  $request->iduser,
-            "tangal"             =>  Carbon::now(),
-        ];
+            $response['meta']["status"]     =   200;
+            $response['meta']["message"]    =   "OK";
+            $response["response"] =
+                [
+                    "warga"              =>  $request->warga,
+                    "user"               =>  $request->iduser,
+                    "tangal"             =>  Carbon::now(),
+                ];
+        } else {
+            $response['meta']["status"]     =   400;
+            $response['meta']["message"]    =   "Sudah di Ambil";
+        }
 
         return response()->json($response, $response['meta']["status"]);
     }
