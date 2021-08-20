@@ -23,7 +23,7 @@ class QrcodeController extends Controller
             $data->save();
 
             $response['meta']["status"]     =   200;
-            $response['meta']["message"]    =   "OK";
+            $response['meta']["message"]    =   "Berhasil";
             $response["response"] =
                 [
                     "warga"              =>  $request->warga,
