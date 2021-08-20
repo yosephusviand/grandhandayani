@@ -92,18 +92,18 @@ class UserController extends Controller
     {
         $user       =   ModelsUser::find($id);
 
-        $jimpitan   =   Jimpitan::select(DB::raw('sum(jimpitan.nominal) as jumlah'))
-            ->join('warga', 'jimpitan.warga', '=', 'warga.id')
+        $jimpitan   =   Jimpitan::join('warga', 'jimpitan.warga', '=', 'warga.id')
             ->where('jimpitan.warga', $user->idwarga)
             ->groupBy('jimpitan.warga')
-            ->get();
+            ->sum('nominal');
 
-        $userjimpit =   Jimpitan::select(DB::raw('sum(jimpitan.nominal) as jumlah'))
-            ->join('users', 'jimpitan.user', '=', 'users.id')
+        $userjimpit =   Jimpitan::join('users', 'jimpitan.user', '=', 'users.id')
             ->where('jimpitan.user', $user->id)
             ->groupBy('jimpitan.user')
-            ->get();
+            ->sum('nominal');
 
-        return response()->json(['data' => $jimpitan, 'data2' => $userjimpit], $this->successStatus);
+        // $data   =   array('data' => $jimpitan, 'userjim' => $userjimpit);
+
+        return response()->json(['data' => $jimpitan, 'userjim' => $userjimpit], $this->successStatus);
     }
 }
