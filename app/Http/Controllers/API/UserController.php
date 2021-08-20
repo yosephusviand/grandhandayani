@@ -11,6 +11,7 @@ use App\Models\Models\Warga;
 use App\Models\User as ModelsUser;
 use App\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Validator;
 
 class UserController extends Controller
@@ -18,14 +19,14 @@ class UserController extends Controller
 
     public $successStatus = 200;
 
-    public function login(){
-        if(Auth::attempt(['email' => request('email'), 'password' => request('password')])){
+    public function login()
+    {
+        if (Auth::attempt(['email' => request('email'), 'password' => request('password')])) {
             $user = Auth::user();
             $success['token'] =  $user->createToken('nApp')->accessToken;
             return response()->json(['success' => $success, 'user' => $user], $this->successStatus);
-        }
-        else{
-            return response()->json(['error'=>'Unauthorised'], 401);
+        } else {
+            return response()->json(['error' => 'Unauthorised'], 401);
         }
     }
 
@@ -39,7 +40,7 @@ class UserController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response()->json(['error'=>$validator->errors()], 401);
+            return response()->json(['error' => $validator->errors()], 401);
         }
 
         $input = $request->all();
@@ -48,7 +49,7 @@ class UserController extends Controller
         $success['token'] =  $user->createToken('nApp')->accessToken;
         $success['name'] =  $user->name;
 
-        return response()->json(['success'=>$success], $this->successStatus);
+        return response()->json(['success' => $success], $this->successStatus);
     }
 
     public function details()
@@ -66,10 +67,10 @@ class UserController extends Controller
 
     public function ronda()
     {
-        $data   =   Ronda::select('ronda.hari', 'warga.nama', 'rumah.nama as block','warga.norumah')
-                            ->join('warga', 'ronda.warga', '=', 'warga.id')
-                            ->join('rumah', 'warga.block', '=', 'rumah.id')
-                            ->get();
+        $data   =   Ronda::select('ronda.hari', 'warga.nama', 'rumah.nama as block', 'warga.norumah')
+            ->join('warga', 'ronda.warga', '=', 'warga.id')
+            ->join('rumah', 'warga.block', '=', 'rumah.id')
+            ->get();
 
 
         return response()->json(['data' => $data], $this->successStatus);
@@ -85,5 +86,24 @@ class UserController extends Controller
         $data   =   array('inbulan' => $inbulan, 'inhari' => $inhari, 'intahun' => $intahun, 'warga' => $warga);
 
         return response()->json(['data' => $data], $this->successStatus);
+    }
+
+    public function userjimpitan($id)
+    {
+        $user       =   ModelsUser::find($id);
+
+        $jimpitan   =   Jimpitan::select(DB::raw('sum(jimpitan.nominal) as jumlah'))
+            ->join('warga', 'jimpitan.warga', '=', 'warga.id')
+            ->where('jimpitan.warga', $user->idwarga)
+            ->groupBy('jimpitan.warga')
+            ->get();
+
+        $userjimpit =   Jimpitan::select(DB::raw('sum(jimpitan.nominal) as jumlah'))
+            ->join('users', 'jimpitan.user', '=', 'users.id')
+            ->where('jimpitan.user', $user->id)
+            ->groupBy('jimpitan.user')
+            ->get();
+
+        return response()->json(['data' => $jimpitan, 'data2' => $userjimpit], $this->successStatus);
     }
 }
