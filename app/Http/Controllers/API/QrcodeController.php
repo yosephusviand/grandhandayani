@@ -31,7 +31,7 @@ class QrcodeController extends Controller
                     "tangal"             =>  Carbon::now(),
                 ];
         } else {
-            $response['meta']["status"]     =   400;
+            $response['meta']["status"]     =   200;
             $response['meta']["message"]    =   "Sudah di Ambil";
         }
 
