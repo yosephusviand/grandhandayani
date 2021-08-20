@@ -88,9 +88,9 @@ class UserController extends Controller
         return response()->json(['data' => $data], $this->successStatus);
     }
 
-    public function userjimpitan($id)
+    public function userjimpitan(Request $request)
     {
-        $user       =   ModelsUser::find($id);
+        $user       =   ModelsUser::find($request->id);
 
         $jimpitan   =   Jimpitan::join('warga', 'jimpitan.warga', '=', 'warga.id')
             ->where('jimpitan.warga', $user->idwarga)

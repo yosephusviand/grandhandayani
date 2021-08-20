@@ -25,7 +25,7 @@ Route::post('register', [\App\Http\Controllers\API\UserController::class, 'regis
 Route::get('ronda', [\App\Http\Controllers\API\UserController::class, 'ronda']);
 Route::get('home', [\App\Http\Controllers\API\UserController::class, 'home']);
 Route::get('user/{id}', [\App\Http\Controllers\API\UserController::class, 'user']);
-Route::get('userjimpitan/{id}', [\App\Http\Controllers\API\UserController::class, 'userjimpitan']);
+Route::post('userjimpitan', [\App\Http\Controllers\API\UserController::class, 'userjimpitan']);
 
 Route::group(['middleware' => 'auth:api'], function () {
     Route::get('user/detail', [\App\Http\Controllers\API\UserController::class, 'details']);
