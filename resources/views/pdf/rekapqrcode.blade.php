@@ -14,7 +14,7 @@
                         {{-- {{ $i }} --}}
                         <div class="form-group" style="text-align: center">
                             <img
-                                src="data:image/png;base64,{{ base64_encode(QrCode::format('svg')->size(100)->errorCorrection('H')->generate($data[$i]->id),) }}}">
+                                src="data:image/png;base64,{{ base64_encode(QrCode::format('svg')->size(120)->errorCorrection('H')->generate($data[$i]->id),) }}}">
                         </div>
                         <div class="form-group" style="text-align: center; font-size: 20px">
                             {{ $data[$i]->to_rumah->nama }}-{{ $data[$i]->norumah }}
@@ -29,7 +29,7 @@
                         {{-- {{ $i }} --}}
                         <div class="form-group" style="text-align: center">
                             <img
-                                src="data:image/png;base64,{{ base64_encode(QrCode::format('svg')->size(100)->errorCorrection('H')->generate($data[$i]->id),) }}}">
+                                src="data:image/png;base64,{{ base64_encode(QrCode::format('svg')->size(120)->errorCorrection('H')->generate($data[$i]->id),) }}}">
                         </div>
                         <div class="form-group" style="text-align: center; font-size: 20px">
                             {{ $data[$i]->to_rumah->nama }}-{{ $data[$i]->norumah }}
