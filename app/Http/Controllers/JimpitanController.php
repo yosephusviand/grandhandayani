@@ -79,4 +79,11 @@ class JimpitanController extends Controller
         return Jimpitan::select( DB::raw('bulan'), DB::raw('sum(nominal) as sumnom'))->groupBy('bulan')->orderBy('bulan')->get();
 
     }
+
+    public function jimbulan(Request $request)
+    {
+
+        return Jimpitan::select( DB::raw('bulan'), DB::raw('warga'), DB::raw('sum(nominal) as sumnom'))->whereNotIn('warga', Warga::select('id'))->groupBy('bulan')->orderBy('bulan')->get();
+
+    }
 }

@@ -50,3 +50,6 @@ Route::get('/ronda', [App\Http\Controllers\UmumController::class,'ronda'])->name
 
 Route::get('/profile', [\App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
 Route::post('/profile', [\App\Http\Controllers\ProfileController::class, 'store'])->name('profile.store');
+
+Route::get('laporan',[\App\Http\Controllers\LaporanController::class, 'index'])->name('laporan.index');\
+Route::get('laporan/qrcode', [\App\Http\Controllers\LaporanController::class, 'PDFQrcode'])->name('laporan.qrcode');

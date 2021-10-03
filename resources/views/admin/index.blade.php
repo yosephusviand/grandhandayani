@@ -87,7 +87,7 @@
                                 <p class="text-sm mb-0 text-capitalize font-weight-bold">Pemasukan Tahun {{ date('Y') }}
                                 </p>
                                 <h5 class="font-weight-bolder mb-0">
-                                    Rp. {{ number_format(Jimpitan::sumbulan(), 0, ',', '.') }}
+                                    Rp. {{ number_format(Jimpitan::sumtahun(), 0, ',', '.') }}
                                     {{-- <span class="text-success text-sm font-weight-bolder">+3%</span> --}}
                                 </h5>
                             </div>
@@ -112,7 +112,7 @@
                                 <p class="text-sm mb-0 text-capitalize font-weight-bold">Pengeluaran Bulan
                                     {{ date('m') }}</p>
                                 <h5 class="font-weight-bolder mb-0">
-                                    Rp.
+                                    Rp. 
                                     {{-- <span class="text-danger text-sm font-weight-bolder">-2%</span> --}}
                                 </h5>
                             </div>
