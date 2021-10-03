@@ -12,7 +12,7 @@
             <tr>
                 <th>
                     <div class="form-group" style="text-align: center">
-                        <img src="data:image/png;base64,{{  base64_encode(QrCode::format('svg')->size(300)->errorCorrection('H')->generate($val->id)) }}}">
+                        <img src="data:image/png;base64,{{  base64_encode(QrCode::format('svg')->size(200)->errorCorrection('H')->generate($val->id)) }}}">
                     </div>
                     <div class="form-group" style="text-align: center; font-size: 20px">
                         {{ $val->to_rumah->nama }}-{{ $val->norumah }} {{ $val->nama }}
