@@ -11,7 +11,7 @@
             <tr>
                 <th>
                     @if ($i % 2 === 0)
-                        {{ $i }}
+                        {{-- {{ $i }} --}}
                         <div class="form-group" style="text-align: center">
                             <img
                                 src="data:image/png;base64,{{ base64_encode(QrCode::format('svg')->size(100)->errorCorrection('H')->generate($data[$i]->id),) }}}">
@@ -26,7 +26,7 @@
                 <th>
                     @if ($i % 2 === 1)
 
-                        {{ $i }}
+                        {{-- {{ $i }} --}}
                         <div class="form-group" style="text-align: center">
                             <img
                                 src="data:image/png;base64,{{ base64_encode(QrCode::format('svg')->size(100)->errorCorrection('H')->generate($data[$i]->id),) }}}">
