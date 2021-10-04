@@ -27,7 +27,7 @@
                                                         <tr>
                                                             <td>{{ ++$i }}</td>
                                                             <td>{{ $val->to_warga->nama }}</td>
-                                                           
+
                                                         </tr>
                                                     @endif
                                                 @endforeach
@@ -56,7 +56,7 @@
                                                         <tr>
                                                             <td>{{ ++$i }}</td>
                                                             <td>{{ $val->to_warga->nama }}</td>
-                                                           
+
                                                         </tr>
                                                     @endif
                                                 @endforeach
@@ -85,7 +85,7 @@
                                                         <tr>
                                                             <td>{{ ++$i }}</td>
                                                             <td>{{ $val->to_warga->nama }}</td>
-                                                           
+
                                                         </tr>
                                                     @endif
                                                 @endforeach
@@ -114,7 +114,7 @@
                                                         <tr>
                                                             <td>{{ ++$i }}</td>
                                                             <td>{{ $val->to_warga->nama }}</td>
-                                                           
+
                                                         </tr>
                                                     @endif
                                                 @endforeach
@@ -143,7 +143,7 @@
                                                         <tr>
                                                             <td>{{ ++$i }}</td>
                                                             <td>{{ $val->to_warga->nama }}</td>
-                                                           
+
                                                         </tr>
                                                     @endif
                                                 @endforeach
@@ -172,7 +172,7 @@
                                                         <tr>
                                                             <td>{{ ++$i }}</td>
                                                             <td>{{ $val->to_warga->nama }}</td>
-                                                           
+
                                                         </tr>
                                                     @endif
                                                 @endforeach
@@ -201,7 +201,7 @@
                                                         <tr>
                                                             <td>{{ ++$i }}</td>
                                                             <td>{{ $val->to_warga->nama }}</td>
-                                                           
+
                                                         </tr>
                                                     @endif
                                                 @endforeach
@@ -213,6 +213,8 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
     </section>
 
     @include('layouts.landingfooter')
