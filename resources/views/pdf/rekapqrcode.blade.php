@@ -21,7 +21,7 @@
                                             <td style="text-align: center">
                                                 <div class="form-group" style="text-align: center">
                                                     <img
-                                                        src="data:image/png;base64,{{ base64_encode(QrCode::format('svg')->size(120)->errorCorrection('H')->generate($val->id),) }}}">
+                                                        src="data:image/png;base64,{{ base64_encode(QrCode::format('svg')->size(150)->errorCorrection('H')->generate($val->id),) }}}">
                                                 </div>
                                                 <div class="form-group" style="text-align: center; font-size: 20px">
                                                     {{ $val->to_rumah->nama }}-{{ $val->norumah }}
@@ -45,7 +45,7 @@
                                             <td>
                                                 <div class="form-group" style="text-align: center">
                                                     <img
-                                                        src="data:image/png;base64,{{ base64_encode(QrCode::format('svg')->size(120)->errorCorrection('H')->generate($val->id),) }}}">
+                                                        src="data:image/png;base64,{{ base64_encode(QrCode::format('svg')->size(150)->errorCorrection('H')->generate($val->id),) }}}">
                                                 </div>
                                                 <div class="form-group" style="text-align: center; font-size: 20px">
                                                     {{ $val->to_rumah->nama }}-{{ $val->norumah }}
