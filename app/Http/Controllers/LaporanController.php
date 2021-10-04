@@ -23,7 +23,7 @@ class LaporanController extends Controller
                     foreach($data as $data){
                         $array[] = $data;
                     }
-                    $split = array_chunk($array, 2);
+                    $split = array_chunk($array, 1);
                 }
                 
         $index = count($split);
