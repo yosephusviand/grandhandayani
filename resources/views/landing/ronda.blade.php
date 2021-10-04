@@ -2,7 +2,10 @@
 
 @section('content')
 
-    <section id="hero" class="hero d-flex align-items-center counts">
+    <section>
+        
+    </section>
+    <section id="blog" class="blog ">
 
         <div class="container data-aos=" fade-up"">
             <div class="row">
