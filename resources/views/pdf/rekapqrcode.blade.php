@@ -16,7 +16,7 @@
                         @if ($j % 2 == 0)
                             <th>
                                 @foreach ($split[$j] as $val)
-                                    <table class="tb-first">
+                                    <table class="tb-first" style="width: 100%">
                                         <tr style="text-align: center">
                                             <td style="text-align: center">
                                                 <div class="form-group" style="text-align: center">
@@ -40,7 +40,7 @@
                         @if ($k % 2 !== 0)
                         <th>
                             @foreach ($split[$k] as $val)
-                                    <table class="tb-first">
+                                    <table class="tb-first" style="width: 100%">
                                         <tr>
                                             <td>
                                                 <div class="form-group" style="text-align: center">
