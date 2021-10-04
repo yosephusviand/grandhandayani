@@ -6,40 +6,34 @@
 </head>
 
 <body>
+    @if (!empty($split))
+    
+    @for ($i = 0; $i < $index; $i++)
     <table width="100%" cellspacing="0" cellpadding="3" border="1" style="font-family: Courier New; font-size: 10pt">
-        @for ($i = 0; $i < count($data); $i++)
             <tr>
-                <th>
-                    @if ($i % 2 === 0)
-                        {{-- {{ $i }} --}}
-                        <div class="form-group" style="text-align: center">
-                            <img
-                                src="data:image/png;base64,{{ base64_encode(QrCode::format('svg')->size(120)->errorCorrection('H')->generate($data[$i]->id),) }}}">
-                        </div>
-                        <div class="form-group" style="text-align: center; font-size: 20px">
-                            {{ $data[$i]->to_rumah->nama }}-{{ $data[$i]->norumah }}
-                            {{ $data[$i]->nama }}
-                        </div>
-
+                @for ($j = $i; $j < $i + 1; $j++)
+                    @if ($j % 2 == 0)
+                        @foreach ($split[$j] as $val)
+                        <th>
+                            {{-- {{ $j }} --}}
+                            <div class="form-group" style="text-align: center">
+                                <img
+                                src="data:image/png;base64,{{ base64_encode(QrCode::format('svg')->size(120)->errorCorrection('H')->generate($val->id),) }}}">
+                                </div>
+                                <div class="form-group" style="text-align: center; font-size: 20px">
+                                    {{ $val->to_rumah->nama }}-{{ $val->norumah }}
+                                    {{ $val->nama }}
+                            </div>
+                                    
+                        </th>
+                        @endforeach
                     @endif
-                </th>
-                <th>
-                    @if ($i % 2 === 1)
-
-                        {{-- {{ $i }} --}}
-                        <div class="form-group" style="text-align: center">
-                            <img
-                                src="data:image/png;base64,{{ base64_encode(QrCode::format('svg')->size(120)->errorCorrection('H')->generate($data[$i]->id),) }}}">
-                        </div>
-                        <div class="form-group" style="text-align: center; font-size: 20px">
-                            {{ $data[$i]->to_rumah->nama }}-{{ $data[$i]->norumah }}
-                            {{ $data[$i]->nama }}
-                        </div>
-                    @endif
-                </th>
+                @endfor
+                
             </tr>
         @endfor
     </table>
+    @endif
 
 </body>
 
