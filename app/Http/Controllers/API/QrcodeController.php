@@ -28,6 +28,7 @@ class QrcodeController extends Controller
             $response["response"] =
                 [
                     "warga"              =>  $warga->nama,
+                    "idwarga"            =>  $request->warga,
                     "user"               =>  $request->iduser,
                     "tangal"             =>  Carbon::now(),
                 ];
@@ -37,6 +38,7 @@ class QrcodeController extends Controller
             $response["response"] =
                 [
                     "warga"              =>  $warga->nama,
+                    "idwarga"            =>  $request->warga,
                     "user"               =>  $request->iduser,
                     "tangal"             =>  Carbon::now(),
                 ];
