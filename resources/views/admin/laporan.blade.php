@@ -44,11 +44,11 @@
                                 Cetak QRCODE
                             </button>
                         </h2>
-                        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show"
+                        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse "
                             aria-labelledby="panelsStayOpen-headingOne">
                             <div class="accordion-body">
                                 <form action="{{ route('laporan.qrcode') }}" method="GET" target="_blank">
-                                    
+
                                     <div class="form-group">
                                         <button type="submit" class="btn bg-gradient-info w-10">Cetak</button>
                                     </div>
@@ -56,26 +56,60 @@
                             </div>
                         </div>
                     </div>
-                    {{-- <div class="accordion-item">
+                    <div class="accordion-item">
                         <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
                                 aria-controls="panelsStayOpen-collapseTwo">
-                                Accordion Item #2
+                                Cetak Jimpitan Kosong
                             </button>
                         </h2>
                         <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse"
                             aria-labelledby="panelsStayOpen-headingTwo">
                             <div class="accordion-body">
-                                <strong>This is the second item's accordion body.</strong> It is hidden by default, until
-                                the collapse plugin adds the appropriate classes that we use to style each element. These
-                                classes control the overall appearance, as well as the showing and hiding via CSS
-                                transitions. You can modify any of this with custom CSS or overriding our default variables.
-                                It's also worth noting that just about any HTML can go within the
-                                <code>.accordion-body</code>, though the transition does limit overflow.
+                                <div class="row">
+                                    <div class="col-2">
+                                        <div class="form-group">
+                                            
+                                            <select name="tahun" class="form-control " id="tahun">
+                                                <option value="">Pilih Tahun</option>
+                                                @for ($i = (date('Y')); $i >= date('Y')-5; $i--)
+                                                    <option value="{{ $i }}">{{ $i }}</option>
+                                                @endfor
+                                            </select>
+                                            @error("tahun") <div class="small text-danger">{{ message }}</div> @enderror
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="col-2">
+
+                                        <div class="form-group">
+                                            @php
+                                                $bulan=array("Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember");
+                                            @endphp
+                                            <select name="bulan" class="form-control " id="bulan">
+                                                <option value="">Pilih Semua</option>
+                                                @for($j = 0; $j < count($bulan); $j++)
+                                                <option value="{{ $j+1 }}">{{ $bulan[$j] }}</option>
+                                                @endfor
+                                            </select>
+                                            @error('bulan') <div class="small text-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <button type="submit" class="btn bg-gradient-info">Pdf</button>
+                                        </div>
+                                        
+                                    </div>
+                                   
+                                </div>
+
                             </div>
                         </div>
                     </div>
+                    {{--
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="panelsStayOpen-headingThree">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"

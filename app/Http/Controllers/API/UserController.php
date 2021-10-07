@@ -26,7 +26,7 @@ class UserController extends Controller
             $success['token'] =  $user->createToken('nApp')->accessToken;
             return response()->json(['success' => $success, 'user' => $user], $this->successStatus);
         } else {
-            return response()->json(['error' => 'Unauthorised'], 401);
+            return response()->json(['success' => 'Username atau Password Salah'], 200);
         }
     }
 
