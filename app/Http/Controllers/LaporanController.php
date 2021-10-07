@@ -23,10 +23,11 @@ class LaporanController extends Controller
                     foreach($data as $data){
                         $array[] = $data;
                     }
-                    $split = array_chunk($array, 1);
+                    $split = array_chunk($array, 4);
                 }
                 
         $index = count($split);
+        // return $split;
         
         $pdf = PDF::loadView('pdf/rekapqrcode', compact('split', 'index'));
 
