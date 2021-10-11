@@ -47,7 +47,9 @@ class QrcodeController extends Controller
         } else {
             $response['meta']["status"]     =   200;
             $response['meta']["message"]    =   "GAGAL";
-            $response["response"]           =   "Data Warga Tidak Ditemukan";
+            $response["response"]           =  [
+                "warga"              =>  "Warga Tidak Ditemukan",
+            ];
         }
 
         return response()->json($response, $response['meta']["status"]);
