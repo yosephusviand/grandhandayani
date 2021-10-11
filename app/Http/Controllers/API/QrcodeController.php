@@ -15,33 +15,39 @@ class QrcodeController extends Controller
     {
         $cek            =   Jimpitan::where('warga', $request->warga)->where('tanggal', date('Y-m-d'))->first();
         $warga          =   Warga::find($request->warga);
-        if ($cek == null) {
-            $data           =   new Jimpitan;
-            $data->warga    =   $request->warga;
-            $data->tanggal  =   Carbon::now();
-            $data->bulan    =   date('m');
-            $data->user     =   $request->iduser;
-            $data->save();
+        if ($warga) {
+            if ($cek == null) {
+                $data           =   new Jimpitan;
+                $data->warga    =   $request->warga;
+                $data->tanggal  =   Carbon::now();
+                $data->bulan    =   date('m');
+                $data->user     =   $request->iduser;
+                $data->save();
 
-            $response['meta']["status"]     =   200;
-            $response['meta']["message"]    =   "Berhasil";
-            $response["response"] =
-                [
-                    "warga"              =>  $warga->nama,
-                    "idwarga"            =>  $request->warga,
-                    "user"               =>  $request->iduser,
-                    "tangal"             =>  Carbon::now(),
-                ];
+                $response['meta']["status"]     =   200;
+                $response['meta']["message"]    =   "Berhasil";
+                $response["response"] =
+                    [
+                        "warga"              =>  $warga->nama,
+                        "idwarga"            =>  $request->warga,
+                        "user"               =>  $request->iduser,
+                        "tangal"             =>  Carbon::now(),
+                    ];
+            } else {
+                $response['meta']["status"]     =   200;
+                $response['meta']["message"]    =   "Sudah di Ambil";
+                $response["response"] =
+                    [
+                        "warga"              =>  $warga->nama,
+                        "idwarga"            =>  $request->warga,
+                        "user"               =>  $request->iduser,
+                        "tangal"             =>  Carbon::now(),
+                    ];
+            }
         } else {
             $response['meta']["status"]     =   200;
-            $response['meta']["message"]    =   "Sudah di Ambil";
-            $response["response"] =
-                [
-                    "warga"              =>  $warga->nama,
-                    "idwarga"            =>  $request->warga,
-                    "user"               =>  $request->iduser,
-                    "tangal"             =>  Carbon::now(),
-                ];
+            $response['meta']["message"]    =   "GAGAL";
+            $response["response"]           =   "Data Warga Tidak Ditemukan";
         }
 
         return response()->json($response, $response['meta']["status"]);
