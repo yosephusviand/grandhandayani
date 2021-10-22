@@ -93,13 +93,13 @@
                                                     <td>{{ ++$i }}</td>
                                                     <td>{{ $val->to_warga->nama }}</td>
                                                     <td>
-                                                        <button type="submit"
+                                                        {{-- <button type="submit"
                                                             class="btn btn-link text-dark text-gradient px-3 mb-0 editronda"
                                                             data-id="{{ $val->id }}"><i
                                                                 class="fas fa-pencil-alt text-dark me-2"
-                                                                aria-hidden="true"></i></button>
+                                                                aria-hidden="true"></i></button> --}}
                                                         <a class="btn btn-link text-danger text-gradient px-3 mb-0"
-                                                            href="{{ route('rumah.destroy', $val->id) }}"><i
+                                                            href="{{ route('rondaa.destroy', $val->id) }}"><i
                                                                 class="far fa-trash-alt me-2"></i></a>
                                                     </td>
                                                 </tr>
@@ -132,13 +132,13 @@
                                                     <td>{{ ++$i }}</td>
                                                     <td>{{ $val->to_warga->nama }}</td>
                                                     <td>
-                                                        <button type="submit"
+                                                        {{-- <button type="submit"
                                                             class="btn btn-link text-dark text-gradient px-3 mb-0 editronda"
                                                             data-id="{{ $val->id }}"><i
                                                                 class="fas fa-pencil-alt text-dark me-2"
-                                                                aria-hidden="true"></i></button>
+                                                                aria-hidden="true"></i></button> --}}
                                                         <a class="btn btn-link text-danger text-gradient px-3 mb-0"
-                                                            href="{{ route('rumah.destroy', $val->id) }}"><i
+                                                            href="{{ route('rondaa.destroy', $val->id) }}"><i
                                                                 class="far fa-trash-alt me-2"></i></a>
                                                     </td>
                                                 </tr>
@@ -171,13 +171,13 @@
                                                     <td>{{ ++$i }}</td>
                                                     <td>{{ $val->to_warga->nama }}</td>
                                                     <td>
-                                                        <button type="submit"
+                                                        {{-- <button type="submit"
                                                             class="btn btn-link text-dark text-gradient px-3 mb-0 editronda"
                                                             data-id="{{ $val->id }}"><i
                                                                 class="fas fa-pencil-alt text-dark me-2"
-                                                                aria-hidden="true"></i></button>
+                                                                aria-hidden="true"></i></button> --}}
                                                         <a class="btn btn-link text-danger text-gradient px-3 mb-0"
-                                                            href="{{ route('rumah.destroy', $val->id) }}"><i
+                                                            href="{{ route('rondaa.destroy', $val->id) }}"><i
                                                                 class="far fa-trash-alt me-2"></i></a>
                                                     </td>
                                                 </tr>
@@ -210,13 +210,13 @@
                                                     <td>{{ ++$i }}</td>
                                                     <td>{{ $val->to_warga->nama }}</td>
                                                     <td>
-                                                        <button type="submit"
+                                                        {{-- <button type="submit"
                                                             class="btn btn-link text-dark text-gradient px-3 mb-0 editronda"
                                                             data-id="{{ $val->id }}"><i
                                                                 class="fas fa-pencil-alt text-dark me-2"
-                                                                aria-hidden="true"></i></button>
+                                                                aria-hidden="true"></i></button> --}}
                                                         <a class="btn btn-link text-danger text-gradient px-3 mb-0"
-                                                            href="{{ route('rumah.destroy', $val->id) }}"><i
+                                                            href="{{ route('rondaa.destroy', $val->id) }}"><i
                                                                 class="far fa-trash-alt me-2"></i></a>
                                                     </td>
                                                 </tr>
@@ -249,13 +249,13 @@
                                                     <td>{{ ++$i }}</td>
                                                     <td>{{ $val->to_warga->nama }}</td>
                                                     <td>
-                                                        <button type="submit"
+                                                        {{-- <button type="submit"
                                                             class="btn btn-link text-dark text-gradient px-3 mb-0 editronda"
                                                             data-id="{{ $val->id }}"><i
                                                                 class="fas fa-pencil-alt text-dark me-2"
-                                                                aria-hidden="true"></i></button>
+                                                                aria-hidden="true"></i></button> --}}
                                                         <a class="btn btn-link text-danger text-gradient px-3 mb-0"
-                                                            href="{{ route('rumah.destroy', $val->id) }}"><i
+                                                            href="{{ route('rondaa.destroy', $val->id) }}"><i
                                                                 class="far fa-trash-alt me-2"></i></a>
                                                     </td>
                                                 </tr>
@@ -288,13 +288,13 @@
                                                     <td>{{ ++$i }}</td>
                                                     <td>{{ $val->to_warga->nama }}</td>
                                                     <td>
-                                                        <button type="submit"
+                                                        {{-- <button type="submit"
                                                             class="btn btn-link text-dark text-gradient px-3 mb-0 editronda"
                                                             data-id="{{ $val->id }}"><i
                                                                 class="fas fa-pencil-alt text-dark me-2"
-                                                                aria-hidden="true"></i></button>
+                                                                aria-hidden="true"></i></button> --}}
                                                         <a class="btn btn-link text-danger text-gradient px-3 mb-0"
-                                                            href="{{ route('rumah.destroy', $val->id) }}"><i
+                                                            href="{{ route('rondaa.destroy', $val->id) }}"><i
                                                                 class="far fa-trash-alt me-2"></i></a>
                                                     </td>
                                                 </tr>
@@ -327,13 +327,13 @@
                                                     <td>{{ ++$i }}</td>
                                                     <td>{{ $val->to_warga->nama }}</td>
                                                     <td>
-                                                        <button type="submit"
+                                                        {{-- <button type="submit"
                                                             class="btn btn-link text-dark text-gradient px-3 mb-0 editronda"
                                                             data-id="{{ $val->id }}"><i
                                                                 class="fas fa-pencil-alt text-dark me-2"
-                                                                aria-hidden="true"></i></button>
+                                                                aria-hidden="true"></i></button> --}}
                                                         <a class="btn btn-link text-danger text-gradient px-3 mb-0"
-                                                            href="{{ route('rumah.destroy', $val->id) }}"><i
+                                                            href="{{ route('rondaa.destroy', $val->id) }}"><i
                                                                 class="far fa-trash-alt me-2"></i></a>
                                                     </td>
                                                 </tr>

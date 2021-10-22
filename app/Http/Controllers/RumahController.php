@@ -42,6 +42,6 @@ class RumahController extends Controller
         $data   =   Rumah::find($id);
         $data->delete();
 
-        return back();
+        return back()->with('status', 1)->with('message', 'Berhasil Hapus');
     }
 }

@@ -35,4 +35,12 @@ class RondaController extends Controller
 
         return back()->with('status', 1)->with('message', 'Berhasil Simpan');
     }
+
+    public function destroy($id)
+    {
+        $data   =   Ronda::find($id);
+        $data->delete();
+
+        return back()->with('status', 1)->with('message', 'Berhasil Hapus');
+    }
 }
