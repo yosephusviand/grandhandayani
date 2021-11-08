@@ -41,15 +41,15 @@ if ($bulan == 1) {
         @php
             $e = 0;
         @endphp
-        @for ($n = 1; $n <= date('t', $date); $n++)
-        @php
-            $e = $n;
-        @endphp
-            <th>{{ $n }}</th>
-        @endfor
         <tr>
-
+            @for ($n = 1; $n <= date('t', $date); $n++)
+                @php
+                    $e = $n;
+                @endphp
+                <th>{{ $n }}</th>
+            @endfor
         </tr>
+
     </thead>
     <tbody>
         @php
@@ -119,7 +119,7 @@ if ($bulan == 1) {
                 $duasembilan += $val->nominal29;
                 $tigapuluh += $val->nominal30;
                 $tigasatu += $val->nominal31;
-                $tagihan = ( $e * 500) - $val->total;
+                $tagihan = $e * 500 - $val->total;
                 $tag += $tagihan;
             @endphp
             <tr>
@@ -157,44 +157,14 @@ if ($bulan == 1) {
                 <td>{{ $val->nominal29 ?? '' }}</td>
                 <td>{{ $val->nominal30 ?? '' }}</td>
                 <td>{{ $val->nominal31 ?? '' }}</td>
-                <th style="text-align: right">{{ number_format($val->total,0,',','.') ?? '' }}</th>
-                <th style="text-align: right">{{ number_format($tagihan,0,',','.') }}</th>
+                <th style="text-align: right">{{ number_format($val->total, 0, ',', '.') ?? '' }}</th>
+                <th style="text-align: right">{{ number_format($tagihan, 0, ',', '.') }}</th>
             </tr>
         @endforeach
     </tbody>
     <tfoot>
         @php
-            $total = $satu+
-            $dua+
-            $tiga+
-            $empat+
-            $lima+
-            $enam+
-            $tujuh+
-            $delapan+
-            $sembilan+
-            $sepuluh+
-            $sebelas+
-            $duabelas+
-            $tigabelas+
-            $empatbelas+
-            $limabelas+
-            $enambelas+
-            $tujuhbelas+
-            $delpanbelas+
-            $sembilanbelas+
-            $duabuluh+
-            $duasatu+
-            $duadua+
-            $duatiga+
-            $duaempat+
-            $dualima+
-            $duaenam+
-            $duatujuh+
-            $duadelapan+
-            $duasembilan+
-            $tigapuluh+
-            $tigasatu;
+            $total = $satu + $dua + $tiga + $empat + $lima + $enam + $tujuh + $delapan + $sembilan + $sepuluh + $sebelas + $duabelas + $tigabelas + $empatbelas + $limabelas + $enambelas + $tujuhbelas + $delpanbelas + $sembilanbelas + $duabuluh + $duasatu + $duadua + $duatiga + $duaempat + $dualima + $duaenam + $duatujuh + $duadelapan + $duasembilan + $tigapuluh + $tigasatu;
         @endphp
         <tr>
             <th colspan="3">TOTAL</th>
@@ -229,8 +199,8 @@ if ($bulan == 1) {
             <th> {{ number_format($duasembilan, 0, ',', '.') }}</th>
             <th> {{ number_format($tigapuluh, 0, ',', '.') }}</th>
             <th> {{ number_format($tigasatu, 0, ',', '.') }}</th>
-            <th style="text-align: right"> {{ number_format($total,0,',','.') }}</th>
-            <th style="text-align: right"> {{ number_format($tag,0,',','.') }}</th>
+            <th style="text-align: right"> {{ number_format($total, 0, ',', '.') }}</th>
+            <th style="text-align: right"> {{ number_format($tag, 0, ',', '.') }}</th>
         </tr>
     </tfoot>
 
