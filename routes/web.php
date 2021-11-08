@@ -53,3 +53,4 @@ Route::post('/profile', [\App\Http\Controllers\ProfileController::class, 'store'
 
 Route::get('laporan',[\App\Http\Controllers\LaporanController::class, 'index'])->name('laporan.index');\
 Route::get('laporan/qrcode', [\App\Http\Controllers\LaporanController::class, 'PDFQrcode'])->name('laporan.qrcode');
+Route::post('laporan/kosong',[\App\Http\Controllers\PDFController::class,'kosong'])->name('laporan.kosong');
