@@ -36,8 +36,15 @@ if ($bulan == 1) {
             <th rowspan="2">Rumah</th>
             <th colspan="31">Tanggal</th>
             <th rowspan="2">Total</th>
+            <th rowspan="2">Tagihan</th>
         </tr>
+        @php
+            $e = 0;
+        @endphp
         @for ($n = 1; $n <= date('t', $date); $n++)
+        @php
+            $e = $n;
+        @endphp
             <th>{{ $n }}</th>
         @endfor
         <tr>
@@ -77,6 +84,7 @@ if ($bulan == 1) {
             $duasembilan = 0;
             $tigapuluh = 0;
             $tigasatu = 0;
+            $tag = 0;
         @endphp
         @foreach ($data as $i => $val)
             @php
@@ -111,6 +119,8 @@ if ($bulan == 1) {
                 $duasembilan += $val->nominal29;
                 $tigapuluh += $val->nominal30;
                 $tigasatu += $val->nominal31;
+                $tagihan = ( $e * 500) - $val->total;
+                $tag += $tagihan;
             @endphp
             <tr>
                 <td>{{ ++$i }}</td>
@@ -148,6 +158,7 @@ if ($bulan == 1) {
                 <td>{{ $val->nominal30 ?? '' }}</td>
                 <td>{{ $val->nominal31 ?? '' }}</td>
                 <th style="text-align: right">{{ number_format($val->total,0,',','.') ?? '' }}</th>
+                <th style="text-align: right">{{ number_format($tagihan,0,',','.') }}</th>
             </tr>
         @endforeach
     </tbody>
@@ -219,6 +230,7 @@ if ($bulan == 1) {
             <th> {{ number_format($tigapuluh, 0, ',', '.') }}</th>
             <th> {{ number_format($tigasatu, 0, ',', '.') }}</th>
             <th style="text-align: right"> {{ number_format($total,0,',','.') }}</th>
+            <th style="text-align: right"> {{ number_format($tag,0,',','.') }}</th>
         </tr>
     </tfoot>
 
