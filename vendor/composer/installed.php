@@ -5,11 +5,20 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '9a5abd0fd1c7d60cbb05a9ade1d2896d1e04138f',
+        'reference' => '2d3ce4230016fa194645b81f95af76547bb3aac0',
         'name' => 'laravel/laravel',
         'dev' => true,
     ),
     'versions' => array(
+        'apility/laravel-fcm' => array(
+            'pretty_version' => 'v1.4.4',
+            'version' => '1.4.4.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../apility/laravel-fcm',
+            'aliases' => array(),
+            'reference' => 'e1484d3831f346d5dc03d64c742e53b6f500f33c',
+            'dev_requirement' => false,
+        ),
         'asm89/stack-cors' => array(
             'pretty_version' => 'v2.0.3',
             'version' => '2.0.3.0',
@@ -45,6 +54,12 @@
             'aliases' => array(),
             'reference' => 'dff976c2f3487d42c1db75a3b180e2b9f0e72ce0',
             'dev_requirement' => false,
+        ),
+        'brozot/laravel-fcm' => array(
+            'dev_requirement' => false,
+            'replaced' => array(
+                0 => '*',
+            ),
         ),
         'cordoval/hamcrest-php' => array(
             'dev_requirement' => true,
@@ -454,7 +469,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '9a5abd0fd1c7d60cbb05a9ade1d2896d1e04138f',
+            'reference' => '2d3ce4230016fa194645b81f95af76547bb3aac0',
             'dev_requirement' => false,
         ),
         'laravel/passport' => array(
