@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use LaravelFCM\Message\OptionsBuilder;
 use LaravelFCM\Message\PayloadDataBuilder;
 use LaravelFCM\Message\PayloadNotificationBuilder;
-
+use FCM;
 class QrcodeController extends Controller
 {
     public function store(Request $request)
