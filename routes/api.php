@@ -30,4 +30,5 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::get('user/detail', [\App\Http\Controllers\API\UserController::class, 'details']);
     Route::post('logout', [\App\Http\Controllers\API\UserController::class, 'logout']);
     Route::post('jimpitan',[\App\Http\Controllers\API\QrcodeController::class,'store']);
+    Route::post('/storetoken', [\App\Http\Controllers\API\UserController::class, 'storetoken']);
 });

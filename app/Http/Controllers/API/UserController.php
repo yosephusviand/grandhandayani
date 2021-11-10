@@ -106,4 +106,12 @@ class UserController extends Controller
 
         return response()->json(['data' => $jimpitan, 'userjim' => $userjimpit], $this->successStatus);
     }
+
+    public function storetoken(Request $request)
+    {
+        $user                   =   ModelsUser::find($request->id);
+
+        $user->remember_token   =   $request->token;
+        $user->save();
+    }
 }
