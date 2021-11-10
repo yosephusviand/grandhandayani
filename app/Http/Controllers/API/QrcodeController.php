@@ -51,14 +51,12 @@ class QrcodeController extends Controller
                     ->setTitle('Jimpitan GHR')
                     ->setBody('Berhasil diambil oleh ' . $user->name);
 
-                $dataBuilder = new PayloadDataBuilder();
+                // $dataBuilder = new PayloadDataBuilder();
                 // $dataBuilder->addData(['type' => 'promo', 'message' => $message]);
+                // $data = $dataBuilder->build();
 
                 $option = $optionBuilder->build();
                 $notification = $notificationBuilder->build();
-                $data = $dataBuilder->build();
-
-                // $downstreamResponse = FCM::sendTo($device_token, $option, $notification, $data);
 
                 FCM::sendTo($warga->remember_token, $option, $notification);
 
