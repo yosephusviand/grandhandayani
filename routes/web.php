@@ -23,6 +23,7 @@ Route::get('generate-pdf/{id}', [App\Http\Controllers\PDFController::class, 'gen
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+
 Route::get('/rumah', [App\Http\Controllers\RumahController::class, 'index'])->name('rumah');
 Route::post('/rumah/simpan', [App\Http\Controllers\RumahController::class, 'store'])->name('rumah.store');
 Route::post('/rumah/edit', [App\Http\Controllers\RumahController::class, 'edit'])->name('rumah.edit');
