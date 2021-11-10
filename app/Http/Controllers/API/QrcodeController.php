@@ -9,6 +9,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
 use LaravelFCM\Message\OptionsBuilder;
 use LaravelFCM\Message\PayloadDataBuilder;
 use LaravelFCM\Message\PayloadNotificationBuilder;
@@ -60,6 +61,7 @@ class QrcodeController extends Controller
                 // $downstreamResponse = FCM::sendTo($device_token, $option, $notification, $data);
 
                 FCM::sendTo($warga->remember_token, $option, $notification);
+
             } else {
                 $response['meta']["status"]     =   200;
                 $response['meta']["message"]    =   "Sudah di Ambil";
