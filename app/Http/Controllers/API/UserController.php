@@ -113,5 +113,7 @@ class UserController extends Controller
 
         $user->remember_token   =   $request->token;
         $user->save();
+
+        return response()->json(['data' => 'Success'], $this->successStatus);
     }
 }
