@@ -81,9 +81,10 @@ class UserController extends Controller
         $inbulan    =   Jimpitan::sumbulan();
         $inhari     =   Jimpitan::sumhari();
         $intahun    =   Jimpitan::sumtahun();
+        $intotal    =   Jimpitan::sumtotal();
         $warga      =   Warga::countwarga();
 
-        $data   =   array('inbulan' => $inbulan, 'inhari' => $inhari, 'intahun' => $intahun, 'warga' => $warga);
+        $data   =   array('inbulan' => $inbulan, 'inhari' => $inhari, 'intahun' => $intahun, 'intotal' => $intotal,'warga' => $warga);
 
         return response()->json(['data' => $data], $this->successStatus);
     }

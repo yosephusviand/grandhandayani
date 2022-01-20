@@ -29,5 +29,9 @@ class Jimpitan extends Model
     {
         return Jimpitan::whereYear('tanggal', date('Y'))->sum('nominal');
     }
+    public static function sumtotal()
+    {
+        return Jimpitan::sum('nominal');
+    }
 
 }
