@@ -24,19 +24,18 @@ class ProfileController extends Controller
 
     public function store(Request $request)
     {
-        $data  =   new User;
-        $warga              =   Warga::find($request->warga);
         if ($request->idedit == '') {
+            $data  =   new User;
+            $warga              =   Warga::find($request->warga);
             $data->name         =   $warga->nama;
             $data->email        =   $request->email;
             $data->password     =   Hash::make($request->password);
             $data->account_role =   $request->account;
             $data->idwarga      =   $request->warga;
         } else {
-            $data->name         =   $warga->nama;
+            $data               =   User::find($request->idedit);
             $data->email        =   $request->email;
             $data->password     =   Hash::make($request->password);
-            $data->account_role =   $request->account;
         }
 
         $data->save();
