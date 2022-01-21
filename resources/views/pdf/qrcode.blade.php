@@ -14,7 +14,7 @@
                         <img src="data:image/png;base64, {!! $qrcode !!}">
                     </div>
                     <div class="form-group" style="text-align: center; font-size: 20px">
-                       {{ $data->to_rumah->nama }}-{{ $data->norumah }} {{ $data->nama }}
+                       {{ $data->to_rumah->nama }}-{{ $data->norumah }}
                     </div>
                     
                 </th>

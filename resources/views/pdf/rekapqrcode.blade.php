@@ -26,7 +26,6 @@
                                                 </div>
                                                 <div class="form-group" style="text-align: center; font-size: 20px">
                                                     {{ $val->to_rumah->nama }}-{{ $val->norumah }}
-                                                    {{ $val->nama }}
                                                 </div>
                                             </td>
                                         </tr>
@@ -50,7 +49,6 @@
                                             </div>
                                             <div class="form-group" style="text-align: center; font-size: 20px">
                                                 {{ $val->to_rumah->nama }}-{{ $val->norumah }}
-                                                {{ $val->nama }}
                                             </div>
                                         </td>
                                     </tr>
