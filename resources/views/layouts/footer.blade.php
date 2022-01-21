@@ -109,17 +109,16 @@
             });
 
             $.ajax({
-                url: "{{ route('warga.edit') }}",
+                url: "{{ route('profile.edit') }}",
                 method: "POST",
                 data: {
                     id: id
                 },
-                success: function(data) {\
-                    
-                    $('[name="idedit"]').val(data.id);
-                    $('[name="email"]').val(data.email);
+                success: function(data) {
                     $('.wargaa').hide();
                     $('.role').hide();
+                    $('[name="idedit"]').val(data.id);
+                    $('[name="email"]').val(data.email);
                 }
             });
         });
