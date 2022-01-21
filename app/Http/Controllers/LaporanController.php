@@ -15,7 +15,7 @@ class LaporanController extends Controller
 
     public function PDFQrcode()
     {
-        $data = Warga::all();
+        $data = Warga::orderBy('block')->orderBy('norumah')->get();
 
         $split = '';
 
@@ -23,12 +23,12 @@ class LaporanController extends Controller
                     foreach($data as $data){
                         $array[] = $data;
                     }
-                    $split = array_chunk($array, 4);
+                    $split = array_chunk($array, 3);
                 }
                 
         $index = count($split);
         
-        $pdf = PDF::loadView('pdf/rekapqrcode', compact('split', 'index'));
+        $pdf = PDF::loadView('pdf/newrekap', compact('split', 'index','data'));
 
         return $pdf->stream('QRCode.pdf');
     }
