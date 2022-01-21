@@ -387,7 +387,7 @@ class PDFController extends Controller
         
         $pdf = PDF::loadView('pdf/kosong', compact('date','data','tahun', 'bulan'))->setPaper('legal', 'landscape');
 
-        return $pdf->stream($request->tahun.'-'.$request->bulan.'_QRCode.pdf');
+        return $pdf->stream($request->tahun.'-'.$request->bulan.'.pdf');
         // return view('pdf.kosong', compact('date','data','tahun', 'bulan'));
     }
 }

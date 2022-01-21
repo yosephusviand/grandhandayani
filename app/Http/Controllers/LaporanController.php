@@ -27,7 +27,6 @@ class LaporanController extends Controller
                 }
                 
         $index = count($split);
-        // return $split;
         
         $pdf = PDF::loadView('pdf/rekapqrcode', compact('split', 'index'));
 
