@@ -37,7 +37,7 @@
                 async: true,
                 dataType: 'json',
                 success: function(data) {
-                    console.log(data);
+                    
                     var html = '';
                     var i;
                     html = '<option value="" disabled selected hidden>Pilih </option>';
@@ -170,7 +170,7 @@
             method: "POST",
             dataType: "JSON",
             success: function(data) {
-                console.log(data);
+                
                 var tanggal = [];
                 var nominal = [];
                 for (var i in data) {
@@ -251,7 +251,7 @@
             method: "POST",
             dataType: "JSON",
             success: function(data) {
-                console.log(data);
+                
                 var bulan = [];
                 var nominal = [];
                 for (var i in data) {

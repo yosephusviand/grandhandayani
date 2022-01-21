@@ -43,7 +43,7 @@ class ProfileController extends Controller
         return back()->with('status', 1)->with('message', 'Berhasil Simpan');
     }
 
-    public function edit($id, Request $request)
+    public function edit(Request $request)
     {
         return User::find($request->id);
     }
