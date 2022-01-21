@@ -114,13 +114,12 @@
                 data: {
                     id: id
                 },
-                success: function(data) {
-                    $('.wargaa').hide();
-                    $('.role').hide();
+                success: function(data) {\
+                    
                     $('[name="idedit"]').val(data.id);
                     $('[name="email"]').val(data.email);
-                    $('[name="block"]').val(data.block);
-                    $('[name="norumah"]').val(data.norumah);
+                    $('.wargaa').hide();
+                    $('.role').hide();
                 }
             });
         });
