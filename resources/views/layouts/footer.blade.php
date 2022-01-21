@@ -99,6 +99,32 @@
             });
         });
 
+        $(document).on('click', '.editprofile', function() {
+            var id = $(this).data('id');
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $.ajax({
+                url: "{{ route('warga.edit') }}",
+                method: "POST",
+                data: {
+                    id: id
+                },
+                success: function(data) {
+                    $('.wargaa').hide();
+                    $('.role').hide();
+                    $('[name="idedit"]').val(data.id);
+                    $('[name="email"]').val(data.email);
+                    $('[name="block"]').val(data.block);
+                    $('[name="norumah"]').val(data.norumah);
+                }
+            });
+        });
+
         $(document).on('click', '.editjimpitan', function() {
             var id = $(this).data('id');
 

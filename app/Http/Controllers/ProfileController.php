@@ -24,15 +24,35 @@ class ProfileController extends Controller
 
     public function store(Request $request)
     {
-        $warga              =   Warga::find($request->warga);
-        $data               =   new User;
-        $data->name         =   $warga->nama;
-        $data->email        =   $request->email;
-        $data->password     =   Hash::make($request->password);
-        $data->account_role =   $request->account;
-        $data->idwarga      =   $request->warga;
+        $data  =   new User;
+        if ($request->idedit == '') {
+            $warga              =   Warga::find($request->warga);
+            $data->name         =   $warga->nama;
+            $data->email        =   $request->email;
+            $data->password     =   Hash::make($request->password);
+            $data->account_role =   $request->account;
+            $data->idwarga      =   $request->warga;
+        } else {
+            $data->email        =   $request->email;
+            $data->password     =   Hash::make($request->password);
+            $data->account_role =   $request->account;
+        }
+
         $data->save();
 
         return back()->with('status', 1)->with('message', 'Berhasil Simpan');
+    }
+
+    public function edit($id, Request $request)
+    {
+        return User::find($request->id);
+    }
+
+    public function delete($id)
+    {
+        $data   =   User::find($id);
+        $data->delete();
+
+        return back()->with('status', 1)->with('message', 'Berhasil Hapus');
     }
 }

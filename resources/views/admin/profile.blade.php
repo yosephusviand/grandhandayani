@@ -37,7 +37,7 @@
                     <form action="{{ route('profile.store') }}" method="POST">
                         @csrf
                         <input type="hidden" name="idedit" id="idedit" value="">
-                        <div class="form-group">
+                        <div class="form-group wargaa">
                             <label for="">Warga</label>
                             <select name="warga" class="form-control select2" id="warga">
                                 <option value="" disabled selected hidden>Pilih </option>
@@ -47,7 +47,7 @@
                             </select>
                             @error('warga') <div class="small text-danger">{{ message }}</div> @enderror
                         </div>
-                        <div class="form-group">
+                        <div class="form-group role">
                             <label for="">Role</label>
                             <select name="account" class="form-control" id="account">
                                 <option value="" disabled selected hidden>Pilih </option>
@@ -100,7 +100,15 @@
                                         <td>{{ $val->name }}</td>
                                         <td>{{ $val->email }}</td>
                                         <td>{{ $val->account_role }}</td>
-                                        <td></td>
+                                        <td>
+                                            <button type="submit"
+                                                class="btn btn-link text-dark text-gradient px-3 mb-0 editprofile"
+                                                data-id="{{ $val->id }}"><i class="fas fa-pencil-alt text-dark me-2"
+                                                    aria-hidden="true"></i></button>
+                                            <a class="btn btn-link text-danger text-gradient px-3 mb-0"
+                                                href="{{ route('profile.delete', $val->id) }}"><i
+                                                    class="far fa-trash-alt me-2"></i></a>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
