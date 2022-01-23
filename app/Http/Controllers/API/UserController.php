@@ -10,6 +10,7 @@ use App\Models\Models\Rumah;
 use App\Models\Models\Warga;
 use App\Models\User as ModelsUser;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Validator;
@@ -106,6 +107,20 @@ class UserController extends Controller
         // $data   =   array('data' => $jimpitan, 'userjim' => $userjimpit);
 
         return response()->json(['data' => $jimpitan, 'userjim' => $userjimpit], $this->successStatus);
+    }
+
+    public function riwayatjimpit($id)
+    {
+        $data   =   Jimpitan::select('jimpitan.nominal', 'jimpitan.bulan', 'jimpitan.tanggal', 'users.name')
+                            ->join('warga', 'jimpitan.warga', '=', 'warga.id')
+                            ->join('users', 'jimpitan.user', '=', 'users.id')
+                            ->where('warga', $id)
+                            ->whereYear('jimpitan.tanggal', Carbon::now()->year)
+                            ->whereMonth('jimpitan.tanggal', Carbon::now()->month)
+                            ->orderBy('jimpitan.tanggal')
+                            ->get();
+
+        return response()->json(['data' => $data]);
     }
 
     public function storetoken(Request $request)

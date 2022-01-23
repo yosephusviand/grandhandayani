@@ -32,10 +32,11 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::post('logout', [\App\Http\Controllers\API\UserController::class, 'logout']);
     Route::post('jimpitan',[\App\Http\Controllers\API\QrcodeController::class,'store']);
     Route::post('storetoken', [\App\Http\Controllers\API\UserController::class, 'storetoken']);
-
+    
     Route::get('ronda-update', [\App\Http\Controllers\API\UserController::class, 'ronda']);
     Route::get('home-update', [\App\Http\Controllers\API\UserController::class, 'home']);
     Route::get('user-update/{id}', [\App\Http\Controllers\API\UserController::class, 'user']);
+    Route::get('userriwayat/{id}', [App\Http\Controllers\API\UserController::class, 'riwayatjimpit']);
     Route::get('userjimpitan-update/{id}', [\App\Http\Controllers\API\UserController::class, 'userjimpitan']);
     Route::get('user-update/detail', [\App\Http\Controllers\API\UserController::class, 'details']);
     Route::post('logout-update', [\App\Http\Controllers\API\UserController::class, 'logout']);
