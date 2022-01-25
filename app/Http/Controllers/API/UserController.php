@@ -111,12 +111,13 @@ class UserController extends Controller
 
     public function riwayatjimpit($id)
     {
+        $user                   =   ModelsUser::find($id);
         $data   =   Jimpitan::select('jimpitan.nominal', 'jimpitan.bulan', 'jimpitan.tanggal', 'users.name')
                             ->join('warga', 'jimpitan.warga', '=', 'warga.id')
                             ->join('users', 'jimpitan.user', '=', 'users.id')
-                            ->where('warga', $id)
                             ->whereYear('jimpitan.tanggal', Carbon::now()->year)
                             ->whereMonth('jimpitan.tanggal', Carbon::now()->month)
+                            ->where('warga', $user->idwarga)
                             ->orderBy('jimpitan.tanggal')
                             ->get();
 
