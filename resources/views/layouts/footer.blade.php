@@ -254,6 +254,7 @@
                 
                 var bulan = [];
                 var nominal = [];
+                var bln = [];
                 for (var i in data) {
                     bulan.push(data[i].bulan);
                     nominal.push(data[i].sumnom);
@@ -271,11 +272,37 @@
                 gradientStroke2.addColorStop(1, 'rgba(20,23,39,0.2)');
                 gradientStroke2.addColorStop(0.2, 'rgba(72,72,176,0.0)');
                 gradientStroke2.addColorStop(0, 'rgba(20,23,39,0)'); //purple colors
+                
+                if (bulan == 1) {
+                    bln = ['Januari'];
+                } else if(bulan == 2){
+                    bln = ['Februari'];
+                } else if (bulan == 3) {
+                    bln = ['Maret'];
+                } else if (bulan == 4) {
+                    bln = ['April'];
+                } else if (bulan == 5) {
+                    bln = ['Mei'];
+                } else if (bulan == 6) {
+                    bln = ['Juni'];
+                } else if (bulan == 7) {
+                    bln = ['Juli'];
+                } else if (bulan == 8) {
+                    bln = ['Agustus'];
+                } else if (bulan == 9) {
+                    bln = ['September'];
+                } else if (bulan == 10) {
+                    bln = ['Oktober'];
+                } else if (bulan == 11) {
+                    bln = ['November'];
+                } else if (bulan == 12) {
+                    bln = ['Desember'];
+                }
 
                 new Chart(ctx2, {
                     type: "line",
                     data: {
-                        labels: bulan,
+                        labels: bln,
                         datasets: [{
                                 label: "Mobile apps",
                                 tension: 0.4,

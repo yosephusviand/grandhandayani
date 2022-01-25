@@ -251,7 +251,7 @@
         <div class="mb-lg-0 mb-4">
             <div class="card z-index-2">
                 <div class="card-header pb-0">
-                    <h6>Pendapatan Bulan {{ $bulan }}</h6>
+                    <h6>Pendapatan Bulan {{ $bulan }} {{ date('Y') }}</h6>
                 </div>
                 <div class="card-body p-3">
                     <div class="bg-gradient-dark border-radius-lg py-3 pe-1 mb-3">
