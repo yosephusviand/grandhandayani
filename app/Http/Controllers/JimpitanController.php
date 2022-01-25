@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Models\Jimpitan;
 use App\Models\Models\RekapJimpitan;
 use App\Models\Models\Warga;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -76,14 +77,14 @@ class JimpitanController extends Controller
     public function chartbulan(Request $request)
     {
 
-        return Jimpitan::select( DB::raw('bulan'), DB::raw('sum(nominal) as sumnom'))->groupBy('bulan')->orderBy('bulan')->get();
+        return Jimpitan::select( DB::raw('bulan'), DB::raw('sum(nominal) as sumnom'))->groupBy('bulan')->orderBy('bulan')->whereYear('tanggal', Carbon::now()->year)->get();
 
     }
 
     public function jimbulan(Request $request)
     {
 
-        return Jimpitan::select( DB::raw('bulan'), DB::raw('warga'), DB::raw('sum(nominal) as sumnom'))->whereNotIn('warga', Warga::select('id'))->groupBy('bulan')->orderBy('bulan')->get();
+        return Jimpitan::select( DB::raw('bulan'), DB::raw('warga'), DB::raw('sum(nominal) as sumnom'))->whereNotIn('warga', Warga::select('id'))->groupBy('bulan')->orderBy('bulan')->whereYear('tanggal', Carbon::now()->year)->get();
 
     }
 }

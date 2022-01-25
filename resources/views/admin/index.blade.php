@@ -32,8 +32,37 @@
         </div>
     </nav>
     <!-- End Navbar -->
+    @php
+        $bln = date('m');
+        $bulan = '';
+        if ($bln == 1) {
+            $bulan = 'Januari';
+        } elseif ($bln == 2) {
+            $bulan = 'Februari';
+        } elseif ($bln == 3) {
+            $bulan = 'Maret';
+        } elseif ($bln == 4) {
+            $bulan = 'April';
+        } elseif ($bln == 5) {
+            $bulan = 'Mei';
+        } elseif ($bln == 6) {
+            $bulan = 'Juni';
+        } elseif ($bln == 7) {
+            $bulan = 'Juli';
+        } elseif ($bln == 8) {
+            $bulan = 'Agustus';
+        } elseif ($bln == 9) {
+            $bulan = 'September';
+        } elseif ($bln == 10) {
+            $bulan = 'Oktober';
+        } elseif ($bln == 11) {
+            $bulan = 'November';
+        } elseif ($bln == 12) {
+            $bulan = 'Desember';
+        }
+    @endphp
     <div class="row">
-        <div class="col-lg-4 col-md-12 mb-xl-0 mb-4">
+        <div class="col-lg-3 col-md-12 mb-xl-0 mb-4">
             <div class="card">
                 <div class="card-body p-3">
                     <div class="row">
@@ -55,13 +84,13 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 col-md-12 mb-xl-0 mb-4">
+        <div class="col-lg-3 col-md-12 mb-xl-0 mb-4">
             <div class="card">
                 <div class="card-body p-3">
                     <div class="row">
                         <div class="col-8">
                             <div class="numbers">
-                                <p class="text-sm mb-0 text-capitalize font-weight-bold">Pemasukan Bulan {{ date('m') }}
+                                <p class="text-sm mb-0 text-capitalize font-weight-bold">Pemasukan Bulan {{ $bulan }}
                                 </p>
                                 <h5 class="font-weight-bolder mb-0">
                                     Rp. {{ number_format(Jimpitan::sumbulan(), 0, ',', '.') }}
@@ -78,7 +107,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 col-md-12 mb-xl-0 mb-4">
+        <div class="col-lg-3 col-md-12 mb-xl-0 mb-4">
             <div class="card">
                 <div class="card-body p-3">
                     <div class="row">
@@ -101,16 +130,39 @@
                 </div>
             </div>
         </div>
+        <div class="col-lg-3 col-md-12 mb-xl-0 mb-4">
+            <div class="card">
+                <div class="card-body p-3">
+                    <div class="row">
+                        <div class="col-8">
+                            <div class="numbers">
+                                <p class="text-sm mb-0 text-capitalize font-weight-bold">Pemasukan Total
+                                </p>
+                                <h5 class="font-weight-bolder mb-0">
+                                    Rp. {{ number_format(Jimpitan::sumtotal(), 0, ',', '.') }}
+                                    {{-- <span class="text-success text-sm font-weight-bolder">+3%</span> --}}
+                                </h5>
+                            </div>
+                        </div>
+                        <div class="col-4 text-end">
+                            <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+                                <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="row mt-2">
-        <div class="col-lg-4 col-md-12 mb-xl-0 mb-4">
+        <div class="col-lg-3 col-md-12 mb-xl-0 mb-4">
             <div class="card">
                 <div class="card-body p-3">
                     <div class="row">
                         <div class="col-8">
                             <div class="numbers">
                                 <p class="text-sm mb-0 text-capitalize font-weight-bold">Pengeluaran Bulan
-                                    {{ date('m') }}</p>
+                                    {{ $bulan }}</p>
                                 <h5 class="font-weight-bolder mb-0">
                                     Rp. 
                                     {{-- <span class="text-danger text-sm font-weight-bolder">-2%</span> --}}
@@ -126,7 +178,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 col-md-12 mb-xl-0 mb-4">
+        <div class="col-lg-3 col-md-12 mb-xl-0 mb-4">
             <div class="card">
                 <div class="card-body p-3">
                     <div class="row">
@@ -149,7 +201,29 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 col-md-12 mb-xl-0 mb-4">
+        <div class="col-lg-3 col-md-12 mb-xl-0 mb-4">
+            <div class="card">
+                <div class="card-body p-3">
+                    <div class="row">
+                        <div class="col-8">
+                            <div class="numbers">
+                                <p class="text-sm mb-0 text-capitalize font-weight-bold">Pengeluaran Total</p>
+                                <h5 class="font-weight-bolder mb-0">
+                                    Rp.
+                                    {{-- <span class="text-success text-sm font-weight-bolder">+5%</span> --}}
+                                </h5>
+                            </div>
+                        </div>
+                        <div class="col-4 text-end">
+                            <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+                                <i class="ni ni-cart text-lg opacity-10" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-12 mb-xl-0 mb-4">
             <div class="card">
                 <div class="card-body p-3">
                     <div class="row">
@@ -177,7 +251,7 @@
         <div class="mb-lg-0 mb-4">
             <div class="card z-index-2">
                 <div class="card-header pb-0">
-                    <h6>Pendapatan Bulan {{ date('m') }}</h6>
+                    <h6>Pendapatan Bulan {{ $bulan }}</h6>
                 </div>
                 <div class="card-body p-3">
                     <div class="bg-gradient-dark border-radius-lg py-3 pe-1 mb-3">

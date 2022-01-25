@@ -19,19 +19,19 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-Route::post('login', [\App\Http\Controllers\API\UserController::class, 'login']);
+// Route::post('login', [\App\Http\Controllers\API\UserController::class, 'login']);
 Route::post('login-update', [\App\Http\Controllers\API\UserController::class, 'login']);
 Route::post('register', [\App\Http\Controllers\API\UserController::class, 'register']);
 
 Route::group(['middleware' => 'auth:api'], function () {
-    Route::get('ronda', [\App\Http\Controllers\API\UserController::class, 'ronda']);
-    Route::get('home', [\App\Http\Controllers\API\UserController::class, 'home']);
-    Route::get('user/{id}', [\App\Http\Controllers\API\UserController::class, 'user']);
-    Route::get('userjimpitan/{id}', [\App\Http\Controllers\API\UserController::class, 'userjimpitan']);
-    Route::get('user/detail', [\App\Http\Controllers\API\UserController::class, 'details']);
-    Route::post('logout', [\App\Http\Controllers\API\UserController::class, 'logout']);
-    Route::post('jimpitan',[\App\Http\Controllers\API\QrcodeController::class,'store']);
-    Route::post('storetoken', [\App\Http\Controllers\API\UserController::class, 'storetoken']);
+    // Route::get('ronda', [\App\Http\Controllers\API\UserController::class, 'ronda']);
+    // Route::get('home', [\App\Http\Controllers\API\UserController::class, 'home']);
+    // Route::get('user/{id}', [\App\Http\Controllers\API\UserController::class, 'user']);
+    // Route::get('userjimpitan/{id}', [\App\Http\Controllers\API\UserController::class, 'userjimpitan']);
+    // Route::get('user/detail', [\App\Http\Controllers\API\UserController::class, 'details']);
+    // Route::post('logout', [\App\Http\Controllers\API\UserController::class, 'logout']);
+    // Route::post('jimpitan',[\App\Http\Controllers\API\QrcodeController::class,'store']);
+    // Route::post('storetoken', [\App\Http\Controllers\API\UserController::class, 'storetoken']);
     
     Route::get('ronda-update', [\App\Http\Controllers\API\UserController::class, 'ronda']);
     Route::get('home-update', [\App\Http\Controllers\API\UserController::class, 'home']);
