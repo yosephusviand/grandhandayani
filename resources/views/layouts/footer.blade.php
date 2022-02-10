@@ -302,7 +302,7 @@
                 new Chart(ctx2, {
                     type: "line",
                     data: {
-                        labels: bln,
+                        labels: bulan,
                         datasets: [{
                                 label: "Mobile apps",
                                 tension: 0.4,
