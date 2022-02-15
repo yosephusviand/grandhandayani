@@ -110,9 +110,16 @@ class UserController extends Controller
             ->groupBy('jimpitan.user')
             ->sum('nominal');
 
+        $jimpitbulan = Jimpitan::join('warga', 'jimpitan.warga', '=', 'warga.id')
+            ->whereYear('jimpitan.tanggal', date('Y'))
+            ->whereMonth('jimpitan.tanggal', date('m'))
+            ->where('jimpitan.warga', $user->idwarga)
+            ->groupBy('jimpitan.user')
+            ->sum('nominal');
+
         // $data   =   array('data' => $jimpitan, 'userjim' => $userjimpit);
 
-        return response()->json(['data' => $jimpitan, 'userjim' => $userjimpit, 'jimhari' => $jimpithari], $this->successStatus);
+        return response()->json(['data' => $jimpitan, 'userjim' => $userjimpit, 'jimhari' => $jimpithari, 'jimbulan' => $jimpitbulan], $this->successStatus);
     }
 
     public function riwayatjimpit($id)
