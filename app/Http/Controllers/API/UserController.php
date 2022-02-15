@@ -114,7 +114,7 @@ class UserController extends Controller
             ->whereYear('jimpitan.tanggal', date('Y'))
             ->whereMonth('jimpitan.tanggal', date('m'))
             ->where('jimpitan.warga', $user->idwarga)
-            ->groupBy('jimpitan.user')
+            ->groupBy('jimpitan.warga')
             ->sum('nominal');
 
         // $data   =   array('data' => $jimpitan, 'userjim' => $userjimpit);
