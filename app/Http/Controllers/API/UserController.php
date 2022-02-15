@@ -104,9 +104,15 @@ class UserController extends Controller
             ->groupBy('jimpitan.user')
             ->sum('nominal');
 
+        $jimpithari =  Jimpitan::join('users', 'jimpitan.user', '=', 'users.id')
+            ->where('jimpitan.user', $user->id)
+            ->where('jimpitan.tanggal', Carbon::now())
+            ->groupBy('jimpitan.user')
+            ->sum('nominal');
+
         // $data   =   array('data' => $jimpitan, 'userjim' => $userjimpit);
 
-        return response()->json(['data' => $jimpitan, 'userjim' => $userjimpit], $this->successStatus);
+        return response()->json(['data' => $jimpitan, 'userjim' => $userjimpit, 'jimhari' => $jimpithari], $this->successStatus);
     }
 
     public function riwayatjimpit($id)
