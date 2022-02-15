@@ -27,8 +27,9 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::get('v2/ronda', [\App\Http\Controllers\API\UserController::class, 'ronda']);
     Route::get('v2/home', [\App\Http\Controllers\API\UserController::class, 'home']);
     Route::get('v2/user/{id}', [\App\Http\Controllers\API\UserController::class, 'user']);
-    Route::get('v2/userjimpitan/{id}', [\App\Http\Controllers\API\UserController::class, 'userjimpitan']);
     Route::get('v2/user/detail', [\App\Http\Controllers\API\UserController::class, 'details']);
+    Route::get('v2/userjimpitan/{id}', [\App\Http\Controllers\API\UserController::class, 'userjimpitan']);
+    Route::get('v2/userriwayat/{id}', [App\Http\Controllers\API\UserController::class, 'riwayatjimpit']);
     Route::post('v2/logout', [\App\Http\Controllers\API\UserController::class, 'logout']);
     Route::post('v2/jimpitan',[\App\Http\Controllers\API\QrcodeController::class,'store']);
     Route::post('v2/storetoken', [\App\Http\Controllers\API\UserController::class, 'storetoken']);
