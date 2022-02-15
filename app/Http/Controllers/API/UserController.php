@@ -105,8 +105,8 @@ class UserController extends Controller
             ->sum('nominal');
 
         $jimpithari =  Jimpitan::join('users', 'jimpitan.user', '=', 'users.id')
+            ->where('jimpitan.tanggal', date('Y-m-d'))
             ->where('jimpitan.user', $user->id)
-            ->where('jimpitan.tanggal', Carbon::now())
             ->groupBy('jimpitan.user')
             ->sum('nominal');
 
