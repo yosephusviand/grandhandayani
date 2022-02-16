@@ -19,7 +19,7 @@ class JimpitanController extends Controller
         $tanggal    =   $request->taggal ?? date('Y-m-d');
         $warga      =   Warga::whereNotIn('id', Jimpitan::select('warga')->where('tanggal', $tanggal))->get();
 
-        $jimpitan   =   Jimpitan::orderBy('id','desc')->get();
+        $jimpitan   =   Jimpitan::whereYear('tanggal', date('Y'))->whereMonth('tanggal', date('m'))->orderBy('id','desc')->get();
         return view('admin.jimpitan', compact('warga', 'jimpitan','tanggal'));
     }
 
