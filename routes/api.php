@@ -20,7 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 Route::post('v2/login', [\App\Http\Controllers\API\UserController::class, 'login']);
-Route::post('login-update', [\App\Http\Controllers\API\UserController::class, 'login']);
+// Route::post('login-update', [\App\Http\Controllers\API\UserController::class, 'login']);
 Route::post('register', [\App\Http\Controllers\API\UserController::class, 'register']);
 
 Route::group(['middleware' => 'auth:api'], function () {
@@ -34,13 +34,13 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::post('v2/jimpitan',[\App\Http\Controllers\API\QrcodeController::class,'store']);
     Route::post('v2/storetoken', [\App\Http\Controllers\API\UserController::class, 'storetoken']);
     
-    Route::get('ronda-update', [\App\Http\Controllers\API\UserController::class, 'ronda']);
-    Route::get('home-update', [\App\Http\Controllers\API\UserController::class, 'home']);
-    Route::get('user-update/{id}', [\App\Http\Controllers\API\UserController::class, 'user']);
-    Route::get('userriwayat/{id}', [App\Http\Controllers\API\UserController::class, 'riwayatjimpit']);
-    Route::get('userjimpitan-update/{id}', [\App\Http\Controllers\API\UserController::class, 'userjimpitan']);
-    Route::get('user-update/detail', [\App\Http\Controllers\API\UserController::class, 'details']);
-    Route::post('logout-update', [\App\Http\Controllers\API\UserController::class, 'logout']);
-    Route::post('jimpitan-update',[\App\Http\Controllers\API\QrcodeController::class,'store']);
-    Route::post('storetoken-update', [\App\Http\Controllers\API\UserController::class, 'storetoken']);
+    // Route::get('ronda-update', [\App\Http\Controllers\API\UserController::class, 'ronda']);
+    // Route::get('home-update', [\App\Http\Controllers\API\UserController::class, 'home']);
+    // Route::get('user-update/{id}', [\App\Http\Controllers\API\UserController::class, 'user']);
+    // Route::get('userriwayat/{id}', [App\Http\Controllers\API\UserController::class, 'riwayatjimpit']);
+    // Route::get('userjimpitan-update/{id}', [\App\Http\Controllers\API\UserController::class, 'userjimpitan']);
+    // Route::get('user-update/detail', [\App\Http\Controllers\API\UserController::class, 'details']);
+    // Route::post('logout-update', [\App\Http\Controllers\API\UserController::class, 'logout']);
+    // Route::post('jimpitan-update',[\App\Http\Controllers\API\QrcodeController::class,'store']);
+    // Route::post('storetoken-update', [\App\Http\Controllers\API\UserController::class, 'storetoken']);
 });
