@@ -109,7 +109,7 @@ class UserController extends Controller
             ->where('jimpitan.user', $user->id)
             ->groupBy('jimpitan.user')
             ->sum('nominal');
-
+        
         $jimpitbulan = Jimpitan::join('warga', 'jimpitan.warga', '=', 'warga.id')
             ->whereYear('jimpitan.tanggal', date('Y'))
             ->whereMonth('jimpitan.tanggal', date('m'))
@@ -117,14 +117,30 @@ class UserController extends Controller
             ->groupBy('jimpitan.warga')
             ->sum('nominal');
 
+        if (date('m') == 1 && date('Y')) {
+            $bulan = 12;
+            $tahun = date('Y')-1;
+        } else {
+            $bulan = date('m')-1;
+            $tahun = date('Y');
+        }
+
+        $piutang = Jimpitan::join('warga', 'jimpitan.warga', '=', 'warga.id')
+            ->whereYear('jimpitan.tanggal', $tahun)
+            ->whereMonth('jimpitan.tanggal', $bulan)
+            ->where('jimpitan.warga', $user->idwarga)
+            ->groupBy('jimpitan.warga')
+            ->sum('nominal');
+        
+        $total = 15000 - $piutang;
         // $data   =   array('data' => $jimpitan, 'userjim' => $userjimpit);
 
-        return response()->json(['data' => $jimpitan, 'userjim' => $userjimpit, 'jimhari' => $jimpithari, 'jimbulan' => $jimpitbulan], $this->successStatus);
+        return response()->json(['data' => $jimpitan, 'userjim' => $userjimpit, 'jimhari' => $jimpithari, 'jimbulan' => $jimpitbulan, 'piutang' => $total], $this->successStatus);
     }
 
     public function riwayatjimpit($id)
     {
-        $user                   =   ModelsUser::find($id);
+        $user   =   ModelsUser::find($id);
         $data   =   Jimpitan::select('jimpitan.nominal', 'jimpitan.bulan', 'jimpitan.tanggal', 'users.name')
                             ->join('warga', 'jimpitan.warga', '=', 'warga.id')
                             ->join('users', 'jimpitan.user', '=', 'users.id')
