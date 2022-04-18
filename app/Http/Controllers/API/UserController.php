@@ -131,6 +131,7 @@ class UserController extends Controller
             ->where('jimpitan.warga', $user->idwarga)
             ->groupBy('jimpitan.warga')
             ->sum('nominal');
+            
         $count = cal_days_in_month(CAL_GREGORIAN, $bulan, $tahun);
         $total = ($count * 500) - $piutang;
         // $data   =   array('data' => $jimpitan, 'userjim' => $userjimpit);
