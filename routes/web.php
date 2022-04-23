@@ -62,3 +62,7 @@ Route::post('laporan/kosong',[\App\Http\Controllers\PDFController::class,'kosong
 Route::get('keuangan',[\App\Http\Controllers\KeuanganController::class, 'index'])->name('keuangan.index');
 Route::get('keuangan/pengeluaran',[\App\Http\Controllers\KeuanganController::class, 'pengeluaran'])->name('pengeluaran.index');
 Route::get('keuangan/lainlain',[\App\Http\Controllers\KeuanganController::class, 'lainlain'])->name('lainlain.index');
+Route::get('/keuangan/deleted/{id}', [\App\Http\Controllers\KeuanganController::class, 'deletebulan'])->name('keuangan.deletejimpitan');
+Route::post('/keuangan/bulan', [App\Http\Controllers\KeuanganController::class, 'bulanjimpitan'])->name('keuangan.bulanjimpitan');
+Route::post('/keuangan/storejimpitan', [App\Http\Controllers\KeuanganController::class, 'storejimpitan'])->name('keuangan.storejimpitan');
+Route::post('/keuangan/editbulan', [\App\Http\Controllers\KeuanganController::class, 'bulanedit'])->name('keuangan.bulanedit');
