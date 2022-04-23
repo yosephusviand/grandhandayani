@@ -46,6 +46,8 @@ class PDFController extends Controller
         FROM
         warga
         INNER JOIN rumah ON warga.block = rumah.id
+        WHERE
+        warga.status = 1
         ) as a
         LEFT JOIN
         (

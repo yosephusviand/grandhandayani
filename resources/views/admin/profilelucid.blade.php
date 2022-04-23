@@ -96,7 +96,7 @@
                                         <td>
                                             <button type="submit" class="btn btn-warning btn-sm editprofile"
                                                 data-id="{{ $val->id }}">Edit</button>
-                                            <a class="btn btn-danger"
+                                            <a class="btn btn-danger btn-sm"
                                                 href="{{ route('profile.delete', $val->id) }}">Hapus</a>
                                         </td>
                                     </tr>
@@ -126,9 +126,10 @@
                 },
                 success: function(data) {
                     $('.wargaa').hide();
-                    $('.role').hide();
+                    // $('.role').hide();
                     $('[name="idedit"]').val(data.id);
                     $('[name="email"]').val(data.email);
+                    $('[name="account"]').val(data.account_role);
                 }
             });
         });
