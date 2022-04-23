@@ -10,14 +10,18 @@ use Illuminate\Http\Request;
 class WargaController extends Controller
 {
     //
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     public function index()
     {
         $block  =   Rumah::all();
-        $warga  =   Warga::all();
+        $warga  =   Warga::orderBy('block')->orderBy('norumah')->get();
         $users  =   User::where('account_role', 'user')->get();
              
-        return view('admin.warga', compact('block', 'warga'));
+        return view('admin.wargalucid', compact('block', 'warga'));
     }
 
     public function store(Request $request)
@@ -28,12 +32,14 @@ class WargaController extends Controller
             $data->block    =   $request->block;
             $data->norumah  =   $request->norumah;
             $data->nama     =   $request->nama;
+            $data->status   =   $request->status;
             $data->save();
         } else {
             $data           =   Warga::find($request->idedit);
             $data->block    =   $request->block;
             $data->norumah  =   $request->norumah;
             $data->nama     =   $request->nama;
+            $data->status   =   $request->status;
             $data->save();
         }
 

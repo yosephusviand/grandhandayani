@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('landing.index');
+    // return view('admin.indexlucid');
 });
 
 Auth::routes();
@@ -50,10 +51,14 @@ Route::get('/rondaa/delete/{id}', [App\Http\Controllers\RondaController::class, 
 Route::get('/ronda', [App\Http\Controllers\UmumController::class,'ronda'])->name('ronda');
 
 Route::get('/profile', [\App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
+Route::get('/profile/deleted/{id}', [\App\Http\Controllers\ProfileController::class, 'delete'])->name('profile.delete');
 Route::post('/profile', [\App\Http\Controllers\ProfileController::class, 'store'])->name('profile.store');
 Route::post('/profile/edit', [\App\Http\Controllers\ProfileController::class, 'edit'])->name('profile.edit');
-Route::post('/profile/deleted/{id}', [\App\Http\Controllers\ProfileController::class, 'delete'])->name('profile.delete');
 
-Route::get('laporan',[\App\Http\Controllers\LaporanController::class, 'index'])->name('laporan.index');\
+Route::get('laporan',[\App\Http\Controllers\LaporanController::class, 'index'])->name('laporan.index');
 Route::get('laporan/qrcode', [\App\Http\Controllers\LaporanController::class, 'PDFQrcode'])->name('laporan.qrcode');
 Route::post('laporan/kosong',[\App\Http\Controllers\PDFController::class,'kosong'])->name('laporan.kosong');
+
+Route::get('keuangan',[\App\Http\Controllers\KeuanganController::class, 'index'])->name('keuangan.index');
+Route::get('keuangan/pengeluaran',[\App\Http\Controllers\KeuanganController::class, 'pengeluaran'])->name('pengeluaran.index');
+Route::get('keuangan/lainlain',[\App\Http\Controllers\KeuanganController::class, 'lainlain'])->name('lainlain.index');

@@ -10,6 +10,12 @@ use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {
         $warga  =   Warga::whereNotExists(function ($query) {
@@ -19,7 +25,7 @@ class ProfileController extends Controller
                     })->get();
 
         $data   =   User::all();
-        return view('admin.profile', compact('warga', 'data'));
+        return view('admin.profilelucid', compact('warga', 'data'));
     }
 
     public function store(Request $request)

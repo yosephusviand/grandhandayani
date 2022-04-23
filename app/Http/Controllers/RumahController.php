@@ -9,11 +9,16 @@ class RumahController extends Controller
 {
     //
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
 
         $data   =   Rumah::all();
-        return view('admin.rumah', compact('data'));
+        return view('admin.rumahlucid', compact('data'));
     }
 
     public function store(Request $request)

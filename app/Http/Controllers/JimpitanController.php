@@ -14,13 +14,18 @@ class JimpitanController extends Controller
 {
     //
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index(Request $request)
     {
         $tanggal    =   $request->taggal ?? date('Y-m-d');
         $warga      =   Warga::whereNotIn('id', Jimpitan::select('warga')->where('tanggal', $tanggal))->get();
 
-        $jimpitan   =   Jimpitan::whereYear('tanggal', date('Y'))->whereMonth('tanggal', date('m'))->orderBy('id','desc')->get();
-        return view('admin.jimpitan', compact('warga', 'jimpitan','tanggal'));
+        $jimpitan   =   Jimpitan::whereYear('tanggal', date('Y'))->whereMonth('tanggal', date('m'))->orderBy('id', 'desc')->get();
+        return view('admin.jimpitanlucid', compact('warga', 'jimpitan', 'tanggal'));
     }
 
     public function store(Request $request)
@@ -34,7 +39,6 @@ class JimpitanController extends Controller
             $data->bulan    =   $exp[1];
             $data->user     =   Auth::user()->id;
             $data->save();
-
         } else {
             $data           =   Jimpitan::find($request->idedit);
             $data->warga    =   $request->warga;
@@ -63,7 +67,7 @@ class JimpitanController extends Controller
 
     public function chart()
     {
-        return Jimpitan::select( DB::raw('tanggal'), DB::raw('sum(nominal) as sumnom'))->whereMonth('tanggal', date('m'))->groupBy('tanggal')->orderBy('tanggal')->get();
+        return Jimpitan::select(DB::raw('tanggal'), DB::raw('sum(nominal) as sumnom'))->whereMonth('tanggal', date('m'))->groupBy('tanggal')->orderBy('tanggal')->get();
     }
 
     public function tgljimpitan(Request $request)
@@ -71,20 +75,17 @@ class JimpitanController extends Controller
         $tanggal    =   $request->tanggal ?? date('Y-m-d');
 
         return Warga::whereNotIn('id', Jimpitan::select('warga')->where('tanggal', $tanggal))->get();
-
     }
 
     public function chartbulan(Request $request)
     {
 
-        return Jimpitan::select( DB::raw('bulan'), DB::raw('sum(nominal) as sumnom'))->groupBy('bulan')->orderBy('bulan')->whereYear('tanggal', Carbon::now()->year)->get();
-
+        return Jimpitan::select(DB::raw('bulan'), DB::raw('sum(nominal) as sumnom'))->groupBy('bulan')->orderBy('bulan')->whereYear('tanggal', Carbon::now()->year)->get();
     }
 
     public function jimbulan(Request $request)
     {
 
-        return Jimpitan::select( DB::raw('bulan'), DB::raw('warga'), DB::raw('sum(nominal) as sumnom'))->whereNotIn('warga', Warga::select('id'))->groupBy('bulan')->orderBy('bulan')->whereYear('tanggal', Carbon::now()->year)->get();
-
+        return Jimpitan::select(DB::raw('bulan'), DB::raw('warga'), DB::raw('sum(nominal) as sumnom'))->whereNotIn('warga', Warga::select('id'))->groupBy('bulan')->orderBy('bulan')->whereYear('tanggal', Carbon::now()->year)->get();
     }
 }

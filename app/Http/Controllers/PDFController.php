@@ -11,14 +11,20 @@ use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class PDFController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function generatePDF($id)
     {
         $data = Warga::find($id);
         $qrcode = base64_encode(QrCode::format('svg')->size(300)->errorCorrection('H')->generate($data->id));
-        
+
         $pdf = PDF::loadView('pdf/qrcode', compact('data', 'qrcode'));
 
-        return $pdf->stream($data->nama.'_QRCode.pdf');
+        return $pdf->stream($data->nama . '_QRCode.pdf');
     }
 
     public function kosong(Request $request)
@@ -27,7 +33,7 @@ class PDFController extends Controller
         // $date = date('F Y');
         $bulan = $request->bulan;
         $tahun = $request->tahun;
-        $date = mktime(0,0,0,$request->bulan,1,$request->tahun);
+        $date = mktime(0, 0, 0, $request->bulan, 1, $request->tahun);
         $data   =   DB::select("SELECT a.*, b.*, c.*,d.*,e.*,f.*,g.*, h.*, i.*, j.*, k.*, l.*, m.*, n.*, o.*,p.*, q.*, r.*, s.*, t.*, u.*, v.*, w.*, x.*, y.*, z.*, aa.*, ab.*, ac.*, ad.*, ae.*, af.*,
         (IFNULL(b.nominal1,0) + IFNULL(c.nominal2,0) + IFNULL(d.nominal3,0) + IFNULL(e.nominal4,0) + IFNULL(f.nominal5,0) + IFNULL(g.nominal6,0) + IFNULL(h.nominal7,0) + IFNULL(i.nominal8,0) + IFNULL(j.nominal9,0) + IFNULL(k.nominal10,0) + IFNULL(l.nominal11,0) + IFNULL(m.nominal12,0) + IFNULL(n.nominal13,0) + IFNULL(o.nominal14,0) + IFNULL(p.nominal15,0) + IFNULL(q.nominal16,0) + IFNULL(r.nominal17,0) + IFNULL(s.nominal18,0) + IFNULL(t.nominal19 ,0)+ IFNULL(u.nominal20,0) + IFNULL(v.nominal21,0) + IFNULL(w.nominal22,0) + IFNULL(x.nominal23,0) + IFNULL(y.nominal24,0) + IFNULL(z.nominal25,0) + IFNULL(aa.nominal26,0) + IFNULL(ab.nominal27,0) + IFNULL(ac.nominal28,0) + IFNULL(ad.nominal29,0) + IFNULL(ae.nominal30,0) + IFNULL(af.nominal31,0)) as total
         FROM
@@ -384,10 +390,10 @@ class PDFController extends Controller
         ORDER BY
         a.blok,
         a.nomor");
-        
-        $pdf = PDF::loadView('pdf/kosong', compact('date','data','tahun', 'bulan'))->setPaper('legal', 'landscape');
 
-        return $pdf->stream($request->tahun.'-'.$request->bulan.'.pdf');
+        $pdf = PDF::loadView('pdf/kosong', compact('date', 'data', 'tahun', 'bulan'))->setPaper('legal', 'landscape');
+
+        return $pdf->stream($request->tahun . '-' . $request->bulan . '.pdf');
         // return view('pdf.kosong', compact('date','data','tahun', 'bulan'));
     }
 }
