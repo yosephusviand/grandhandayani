@@ -33,6 +33,7 @@ class WargaController extends Controller
             $data->norumah  =   $request->norumah;
             $data->nama     =   $request->nama;
             $data->status   =   $request->status;
+            $data->jimpitan =   $request->jimpitan;
             $data->save();
         } else {
             $data           =   Warga::find($request->idedit);
@@ -40,6 +41,7 @@ class WargaController extends Controller
             $data->norumah  =   $request->norumah;
             $data->nama     =   $request->nama;
             $data->status   =   $request->status;
+            $data->jimpitan =   $request->jimpitan;
             $data->save();
         }
 

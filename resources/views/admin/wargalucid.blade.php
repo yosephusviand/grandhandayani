@@ -35,6 +35,16 @@
                             @enderror
                         </div>
                         <div class="form-group">
+                            <label for="">Type Jimpitan</label>
+                            <select name="jimpitan" class="form-control" id="jimpitan">
+                                <option value="" disabled selected hidden>Pilih </option>
+                                <option value="1">Harian</option>
+                                <option value="2">Bulanan</option>
+                            </select>
+                            @error("jimpitan") <div class="small text-danger">{{ message }}</div> @enderror
+                        </div>
+                        
+                        <div class="form-group">
                             <label for="">Status</label>
                             <select name="status" class="form-control" id="status" required>
                                 <option value="" disabled selected hidden>Pilih </option>
@@ -81,6 +91,7 @@
                                     <th>No Rumah</th>
                                     <th>Nama</th>
                                     <th>Status</th>
+                                    <th>Jimpitan</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -96,6 +107,13 @@
                                                 <span class="badge badge-warning">Aktif</span>
                                             @else
                                                 <span class="badge badge-danger">Non Aktif</span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if ($val->jimpitan == 1)
+                                                <span class="badge badge-primary">Harian</span>
+                                            @else
+                                                <span class="badge badge-info">Bulanan</span>
                                             @endif
                                         </td>
                                         <td>
@@ -159,6 +177,8 @@
                     $('[name="nama"]').val(data.nama);
                     $('[name="block"]').val(data.block);
                     $('[name="norumah"]').val(data.norumah);
+                    $('[name="status"]').val(data.status);
+                    $('[name="jimpitan"]').val(data.jimpitan);
                 }
             });
         });
