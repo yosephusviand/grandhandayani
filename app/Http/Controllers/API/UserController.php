@@ -165,17 +165,17 @@ class UserController extends Controller
                             ->orderBy('jimpitan.tanggal')
                             ->get();
 
-        // $bulan   =   Bulanan::select('jimpitanbulanan.nominal', 'jimpitanbulanan.bulan', 'users.name')
-        //                     ->join('warga', 'jimpitan.warga', '=', 'warga.id')
-        //                     ->join('users', 'jimpitan.user', '=', 'users.id')
-        //                     ->where('jimpitanbulanan.tahun', Carbon::now()->year)
-        //                     ->where('jimpitanbulanan.bulan', Carbon::now()->month)
-        //                     ->where('warga', $user->idwarga)
-        //                     // ->where('warga.jimpitan', 2)
-        //                     ->orderBy('jimpitanbulanan.bulan')
-        //                     ->get();
+        $bulan   =   Bulanan::select('jimpitanbulanan.nominal', 'jimpitanbulanan.bulan', 'users.name')
+                            ->join('warga', 'jimpitan.warga', '=', 'warga.id')
+                            ->join('users', 'jimpitan.user', '=', 'users.id')
+                            ->where('jimpitanbulanan.tahun', Carbon::now()->year)
+                            ->where('jimpitanbulanan.bulan', Carbon::now()->month)
+                            ->where('idwarga', $user->idwarga)
+                            // ->where('warga.jimpitan', 2)
+                            ->orderBy('jimpitanbulanan.bulan')
+                            ->get();
 
-        return response()->json(['data' => $data, 'warga' => $warga]);
+        return response()->json(['data' => $data, 'warga' => $warga, 'bulanan' => $bulan]);
     }
 
     public function storetoken(Request $request)
