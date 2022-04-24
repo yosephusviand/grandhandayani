@@ -131,7 +131,7 @@ class UserController extends Controller
             ->whereYear('jimpitan.tanggal', $tahun)
             ->whereMonth('jimpitan.tanggal', $bulan)
             ->where('jimpitan.warga', $user->idwarga)
-            ->where('warga.jimpitan', 1)
+            // ->where('warga.jimpitan', 1)
             ->groupBy('jimpitan.warga')
             ->sum('nominal');
         
@@ -139,7 +139,7 @@ class UserController extends Controller
             ->where('jimpitanbulanan.bulan', $bulan)
             ->where('jimpitanbulanan.tahun', $tahun)
             ->where('jimpitan.warga', $user->idwarga)
-            ->where('warga.jimpitan', 2)
+            // ->where('warga.jimpitan', 2)
             ->groupBy('jimpitanbulanan.idwarga')
             ->sum('nominal');
             
@@ -160,7 +160,7 @@ class UserController extends Controller
                             ->join('users', 'jimpitan.user', '=', 'users.id')
                             ->whereYear('jimpitan.tanggal', Carbon::now()->year)
                             ->whereMonth('jimpitan.tanggal', Carbon::now()->month)
-                            ->where('warga.jimpitan', 1)
+                            // ->where('warga.jimpitan', 1)
                             ->where('warga', $user->idwarga)
                             ->orderBy('jimpitan.tanggal')
                             ->get();
@@ -171,7 +171,7 @@ class UserController extends Controller
                             ->where('jimpitanbulanan.tahun', Carbon::now()->year)
                             ->where('jimpitanbulanan.bulan', Carbon::now()->month)
                             ->where('warga', $user->idwarga)
-                            ->where('warga.jimpitan', 2)
+                            // ->where('warga.jimpitan', 2)
                             ->orderBy('jimpitanbulanan.bulan')
                             ->get();
 
