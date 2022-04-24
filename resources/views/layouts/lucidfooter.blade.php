@@ -8,6 +8,8 @@
 <script src="{{ asset('lucid/light') }}/assets/bundles/flotscripts.bundle.js"></script> <!-- flot charts Plugin Js -->
 <script src="{{ asset('lucid') }}/assets/vendor/toastr/toastr.js"></script>
 <script src="{{ asset('lucid') }}/assets/vendor/flot-charts/jquery.flot.selection.js"></script>
+<script src="{{ asset('lucid') }}/assets/vendor/dropify/js/dropify.min.js"></script>
+<script src="{{ asset('lucid/light') }}/assets/js/pages/forms/dropify.js"></script>
 
 <script src="{{ asset('lucid') }}/assets/vendor/jquery-datatable/buttons/dataTables.buttons.min.js"></script>
 <script src="{{ asset('lucid') }}/assets/vendor/jquery-datatable/buttons/buttons.bootstrap4.min.js"></script>

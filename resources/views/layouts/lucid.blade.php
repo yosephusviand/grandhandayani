@@ -28,6 +28,8 @@
     <link rel="stylesheet" href="{{ asset('lucid/light') }}/assets/css/main.css">
     <link rel="stylesheet" href="{{ asset('lucid/light') }}/assets/css/color_skins.css">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ asset('lucid') }}/assets/vendor/dropify/css/dropify.min.css">
+    
 
 
     <style>
@@ -216,7 +218,7 @@
         <script>
             $context = 'error';
             $message = "{{ Session::get('message') }}";
-            $positionClass = 'top-full-width';
+            $positionClass = 'toast-top-full-width';
             toastr.remove();
             toastr[$context]($message, '', {
                 positionClass: $positionClass
