@@ -25,7 +25,7 @@
                         <div class="form-group">
                             <label for="">Nama Blok Rumah</label>
                             <input type="text" name="nama" class="form-control" id="nama" placeholder="Tuliskan " value=""
-                                autocomplete="off">
+                                autocomplete="off" required>
                             @error('blok')
                                 <div class="small text-danger">{{ message }}</div>
                             @enderror

@@ -52,7 +52,7 @@
                             @csrf
                             <label for="">Tanggal</label>
                             <input type="date" name="tanggal" class="form-control" id="tanggal" placeholder="Tuliskan "
-                                value="{{ $tanggal }}" autocomplete="off">
+                                value="{{ $tanggal }}" autocomplete="off" required>
                             @error('tanggal')
                                 <div class="small text-danger">{{ message }}</div>
                             @enderror
@@ -60,7 +60,7 @@
 
                         <div class="form-group">
                             <label for="">Warga</label>
-                            <select name="warga" class="form-control select2" id="warga">
+                            <select name="warga" class="form-control select2" id="warga" required>
                                 <option value="" disabled selected hidden>Pilih </option>
                                 @foreach ($warga as $blok)
                                     <option value="{{ $blok->id }}">{{ $blok->to_rumah->nama }}-{{ $blok->norumah }}

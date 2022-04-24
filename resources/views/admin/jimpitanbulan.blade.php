@@ -24,7 +24,7 @@
                         <input type="hidden" name="idedit" id="idedit" value="">
                         <div class="form-group">
                             <label for="">Bulan</label>
-                            <select name="bulan" class="form-control" id="bulan">
+                            <select name="bulan" class="form-control" id="bulan" required>
                                 <option value="" disabled selected hidden>Pilih </option>
                                 <option value="1">Januari</option>
                                 <option value="2">Februari</option>
@@ -45,7 +45,7 @@
                         </div>
                         <div class="form-group">
                             <label for="">Warga</label>
-                            <select name="warga" class="form-control select2" id="warga">
+                            <select name="warga" class="form-control select2" id="warga" required>
                                 <option value="" disabled selected hidden>Pilih </option>
                                 @foreach ($warga as $blok)
                                     <option value="{{ $blok->id }}">{{ $blok->to_rumah->nama }}-{{ $blok->norumah }}
@@ -59,7 +59,7 @@
                         <div class="form-group">
                             <label for="">Nominal</label>
                             <input type="number" name="nominal" class="form-control" id="nominal" placeholder="Tuliskan "
-                                value="" autocomplete="off">
+                                value="" autocomplete="off" required>
                             @error('nominal')
                                 <div class="small text-danger">{{ message }}</div>
                             @enderror

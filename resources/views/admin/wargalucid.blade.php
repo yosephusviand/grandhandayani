@@ -36,7 +36,7 @@
                         </div>
                         <div class="form-group">
                             <label for="">Type Jimpitan</label>
-                            <select name="jimpitan" class="form-control" id="jimpitan">
+                            <select name="jimpitan" class="form-control" id="jimpitan" required>
                                 <option value="" disabled selected hidden>Pilih </option>
                                 <option value="1">Harian</option>
                                 <option value="2">Bulanan</option>

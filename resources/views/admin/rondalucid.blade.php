@@ -24,7 +24,7 @@
                         <input type="hidden" name="idedit" id="idedit" value="">
                         <div class="form-group">
                             <label for="">Warga</label>
-                            <select name="warga" class="form-control select2" id="warga">
+                            <select name="warga" class="form-control select2" id="warga" required>
                                 <option value="" disabled selected hidden>Pilih </option>
                                 @foreach ($warga as $val)
                                     <option value="{{ $val->id }}">{{ $val->to_rumah->nama }}-{{ $val->norumah }}
@@ -37,7 +37,7 @@
                         </div>
                         <div class="form-group">
                             <label for="">Hari</label>
-                            <select name="hari" class="form-control select2" id="hari">
+                            <select name="hari" class="form-control select2" id="hari" required>
                                 <option value="" disabled selected hidden>Pilih </option>
                                 <option value="Senin">Senin</option>
                                 <option value="Selasa">Selasa</option>
