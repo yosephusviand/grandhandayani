@@ -135,13 +135,15 @@ class UserController extends Controller
             ->groupBy('jimpitan.warga')
             ->sum('nominal');
         
-        $piutangbulan = Bulanan::join('warga', 'jimpitanbulanan.idwarga', '=', 'warga.id')
+        $piutangbulan = Bulanan::select('nominal')
+            ->join('warga', 'jimpitanbulanan.idwarga', '=', 'warga.id')
             ->where('jimpitanbulanan.bulan', $bulan)
             ->where('jimpitanbulanan.tahun', $tahun)
             ->where('jimpitanbulan.idwarga', $user->idwarga)
+            ->get();
             // ->where('warga.jimpitan', 2)
-            ->groupBy('jimpitanbulanan.idwarga')
-            ->sum('nominal');
+            // ->groupBy('jimpitanbulanan.idwarga')
+            // ->sum('nominal');
             
         $count = cal_days_in_month(CAL_GREGORIAN, $bulan, $tahun);
         $total = ($count * 500) - $piutang;
@@ -165,11 +167,9 @@ class UserController extends Controller
                             ->orderBy('jimpitan.tanggal')
                             ->get();
 
-        $bulan   =   Bulanan::select('jimpitanbulanan.nominal', 'jimpitanbulanan.bulan', 'users.name')
+        $bulan   =   Bulanan::select('jimpitanbulanan.nominal', 'jimpitanbulanan.bulan')
                             ->join('warga', 'jimpitan.warga', '=', 'warga.id')
-                            ->join('users', 'jimpitan.user', '=', 'users.id')
                             ->where('jimpitanbulanan.tahun', Carbon::now()->year)
-                            ->where('jimpitanbulanan.bulan', Carbon::now()->month)
                             ->where('jimpitanbulanan.idwarga', $user->idwarga)
                             // ->where('warga.jimpitan', 2)
                             ->orderBy('jimpitanbulanan.bulan')
