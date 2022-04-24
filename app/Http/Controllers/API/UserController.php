@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Models\Bulanan;
 use App\Models\Models\Jimpitan;
 use App\Models\Models\Ronda;
 use App\Models\Models\Rumah;
@@ -93,6 +94,7 @@ class UserController extends Controller
     public function userjimpitan($id)
     {
         $user       =   ModelsUser::find($id);
+        $warga      =   Warga::find($user->idwarga);
 
         $jimpitan   =   Jimpitan::join('warga', 'jimpitan.warga', '=', 'warga.id')
             ->where('jimpitan.warga', $user->idwarga)
@@ -129,29 +131,51 @@ class UserController extends Controller
             ->whereYear('jimpitan.tanggal', $tahun)
             ->whereMonth('jimpitan.tanggal', $bulan)
             ->where('jimpitan.warga', $user->idwarga)
+            ->where('warga.jimpitan', 1)
             ->groupBy('jimpitan.warga')
+            ->sum('nominal');
+        
+        $piutangbulan = Bulanan::join('warga', 'jimpitanbulanan.idwarga', '=', 'warga.id')
+            ->where('jimpitanbulanan.bulan', $bulan)
+            ->where('jimpitanbulanan.tahun', $tahun)
+            ->where('jimpitan.warga', $user->idwarga)
+            ->where('warga.jimpitan', 2)
+            ->groupBy('jimpitanbulanan.idwarga')
             ->sum('nominal');
             
         $count = cal_days_in_month(CAL_GREGORIAN, $bulan, $tahun);
         $total = ($count * 500) - $piutang;
+        $totalbulan = 15000 - $piutangbulan;
         // $data   =   array('data' => $jimpitan, 'userjim' => $userjimpit);
 
-        return response()->json(['data' => $jimpitan, 'userjim' => $userjimpit, 'jimhari' => $jimpithari, 'jimbulan' => $jimpitbulan, 'piutang' => $total], $this->successStatus);
+        return response()->json(['warga' => $warga, 'data' => $jimpitan, 'userjim' => $userjimpit, 'jimhari' => $jimpithari, 'jimbulan' => $jimpitbulan, 'piutang' => $total, 'piutangbulan' => $totalbulan], $this->successStatus);
     }
 
     public function riwayatjimpit($id)
     {
         $user   =   ModelsUser::find($id);
+        $warga  =   Warga::find($user->idwarga);
         $data   =   Jimpitan::select('jimpitan.nominal', 'jimpitan.bulan', 'jimpitan.tanggal', 'users.name')
                             ->join('warga', 'jimpitan.warga', '=', 'warga.id')
                             ->join('users', 'jimpitan.user', '=', 'users.id')
                             ->whereYear('jimpitan.tanggal', Carbon::now()->year)
                             ->whereMonth('jimpitan.tanggal', Carbon::now()->month)
+                            ->where('warga.jimpitan', 1)
                             ->where('warga', $user->idwarga)
                             ->orderBy('jimpitan.tanggal')
                             ->get();
 
-        return response()->json(['data' => $data]);
+        $bulan   =   Bulanan::select('jimpitanbulanan.nominal', 'jimpitanbulanan.bulan', 'users.name')
+                            ->join('warga', 'jimpitan.warga', '=', 'warga.id')
+                            ->join('users', 'jimpitan.user', '=', 'users.id')
+                            ->where('jimpitanbulanan.tahun', Carbon::now()->year)
+                            ->where('jimpitanbulanan.bulan', Carbon::now()->month)
+                            ->where('warga', $user->idwarga)
+                            ->where('warga.jimpitan', 2)
+                            ->orderBy('jimpitanbulanan.bulan')
+                            ->get();
+
+        return response()->json(['data' => $data, 'warga' => $warga, 'bulan' => $bulan]);
     }
 
     public function storetoken(Request $request)
