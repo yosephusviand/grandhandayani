@@ -84,7 +84,9 @@ if ($bulan == 1) {
             $duasembilan = 0;
             $tigapuluh = 0;
             $tigasatu = 0;
+            $nominal = 0;
             $tag = 0;
+            $tagbulan = 0;
         @endphp
         @foreach ($data as $i => $val)
             @php
@@ -119,52 +121,80 @@ if ($bulan == 1) {
                 $duasembilan += $val->nominal29;
                 $tigapuluh += $val->nominal30;
                 $tigasatu += $val->nominal31;
-                $tagihan = $e * 500 - $val->total;
+                if ($val->del != null) {
+                    $nominal += 0;
+                } else {
+                    $nominal += $val->nominalbulan;
+                }
+                if ($val->deleted != null) {
+                    $tagihan = 0;
+                } elseif ($val->jim == 1) {
+                    $tagihan = $e * 500 - $val->total;
+                } elseif ($val->jim == 2) {
+                    $tagihan = $val->nominalbulan;
+                }
                 $tag += $tagihan;
             @endphp
             <tr>
                 <td>{{ ++$i }}</td>
-                <td>{{ $val->nama }}</td>
+                <td>{{ $val->nama }}
+                    @if ($val->deleted)
+                        {{ ' (Deleted)' }}
+                    @endif
+                </td>
                 <td>{{ $val->blok . ' ' . $val->nomor }}</td>
-                <td>{{ $val->nominal1 ?? '' }}</td>
-                <td>{{ $val->nominal2 ?? '' }}</td>
-                <td>{{ $val->nominal3 ?? '' }}</td>
-                <td>{{ $val->nominal4 ?? '' }}</td>
-                <td>{{ $val->nominal5 ?? '' }}</td>
-                <td>{{ $val->nominal6 ?? '' }}</td>
-                <td>{{ $val->nominal7 ?? '' }}</td>
-                <td>{{ $val->nominal8 ?? '' }}</td>
-                <td>{{ $val->nominal9 ?? '' }}</td>
-                <td>{{ $val->nominal10 ?? '' }}</td>
-                <td>{{ $val->nominal11 ?? '' }}</td>
-                <td>{{ $val->nominal12 ?? '' }}</td>
-                <td>{{ $val->nominal13 ?? '' }}</td>
-                <td>{{ $val->nominal14 ?? '' }}</td>
-                <td>{{ $val->nominal15 ?? '' }}</td>
-                <td>{{ $val->nominal16 ?? '' }}</td>
-                <td>{{ $val->nominal17 ?? '' }}</td>
-                <td>{{ $val->nominal18 ?? '' }}</td>
-                <td>{{ $val->nominal19 ?? '' }}</td>
-                <td>{{ $val->nominal20 ?? '' }}</td>
-                <td>{{ $val->nominal21 ?? '' }}</td>
-                <td>{{ $val->nominal22 ?? '' }}</td>
-                <td>{{ $val->nominal23 ?? '' }}</td>
-                <td>{{ $val->nominal24 ?? '' }}</td>
-                <td>{{ $val->nominal25 ?? '' }}</td>
-                <td>{{ $val->nominal26 ?? '' }}</td>
-                <td>{{ $val->nominal27 ?? '' }}</td>
-                <td>{{ $val->nominal28 ?? '' }}</td>
-                <td>{{ $val->nominal29 ?? '' }}</td>
-                <td>{{ $val->nominal30 ?? '' }}</td>
-                <td>{{ $val->nominal31 ?? '' }}</td>
-                <th style="text-align: right">{{ number_format($val->total, 0, ',', '.') ?? '' }}</th>
+                @if ($val->jim == 1 and $val->deleted == null)
+                    <td>{{ $val->nominal1 ?? '' }}</td>
+                    <td>{{ $val->nominal2 ?? '' }}</td>
+                    <td>{{ $val->nominal3 ?? '' }}</td>
+                    <td>{{ $val->nominal4 ?? '' }}</td>
+                    <td>{{ $val->nominal5 ?? '' }}</td>
+                    <td>{{ $val->nominal6 ?? '' }}</td>
+                    <td>{{ $val->nominal7 ?? '' }}</td>
+                    <td>{{ $val->nominal8 ?? '' }}</td>
+                    <td>{{ $val->nominal9 ?? '' }}</td>
+                    <td>{{ $val->nominal10 ?? '' }}</td>
+                    <td>{{ $val->nominal11 ?? '' }}</td>
+                    <td>{{ $val->nominal12 ?? '' }}</td>
+                    <td>{{ $val->nominal13 ?? '' }}</td>
+                    <td>{{ $val->nominal14 ?? '' }}</td>
+                    <td>{{ $val->nominal15 ?? '' }}</td>
+                    <td>{{ $val->nominal16 ?? '' }}</td>
+                    <td>{{ $val->nominal17 ?? '' }}</td>
+                    <td>{{ $val->nominal18 ?? '' }}</td>
+                    <td>{{ $val->nominal19 ?? '' }}</td>
+                    <td>{{ $val->nominal20 ?? '' }}</td>
+                    <td>{{ $val->nominal21 ?? '' }}</td>
+                    <td>{{ $val->nominal22 ?? '' }}</td>
+                    <td>{{ $val->nominal23 ?? '' }}</td>
+                    <td>{{ $val->nominal24 ?? '' }}</td>
+                    <td>{{ $val->nominal25 ?? '' }}</td>
+                    <td>{{ $val->nominal26 ?? '' }}</td>
+                    <td>{{ $val->nominal27 ?? '' }}</td>
+                    <td>{{ $val->nominal28 ?? '' }}</td>
+                    <td>{{ $val->nominal29 ?? '' }}</td>
+                    <td>{{ $val->nominal30 ?? '' }}</td>
+                    <td>{{ $val->nominal31 ?? '' }}</td>
+                @elseif ($val->deleted != null)
+                    <td colspan="31" style="text-align: center"><strong> Deleted </strong></td>
+                @else
+                    <td colspan="31" style="text-align: center"><strong> Bulanan </strong></td>
+                @endif
+                @if ($val->jim == 1)
+                    <th style="text-align: right">{{ number_format($val->total, 0, ',', '.') ?? '' }}</th>
+                @elseif($val->del != null)
+                    <th style="text-align: right">{{ number_format(0, 0, ',', '.') ?? '' }}</th>
+                @else
+                    <th style="text-align: right">{{ number_format($val->nominalbulan, 0, ',', '.') ?? '' }}</th>
+                @endif
                 <th style="text-align: right">{{ number_format($tagihan, 0, ',', '.') }}</th>
+
             </tr>
         @endforeach
     </tbody>
     <tfoot>
         @php
-            $total = $satu + $dua + $tiga + $empat + $lima + $enam + $tujuh + $delapan + $sembilan + $sepuluh + $sebelas + $duabelas + $tigabelas + $empatbelas + $limabelas + $enambelas + $tujuhbelas + $delpanbelas + $sembilanbelas + $duabuluh + $duasatu + $duadua + $duatiga + $duaempat + $dualima + $duaenam + $duatujuh + $duadelapan + $duasembilan + $tigapuluh + $tigasatu;
+            $total = $satu + $dua + $tiga + $empat + $lima + $enam + $tujuh + $delapan + $sembilan + $sepuluh + $sebelas + $duabelas + $tigabelas + $empatbelas + $limabelas + $enambelas + $tujuhbelas + $delpanbelas + $sembilanbelas + $duabuluh + $duasatu + $duadua + $duatiga + $duaempat + $dualima + $duaenam + $duatujuh + $duadelapan + $duasembilan + $tigapuluh + $tigasatu + $nominal;
         @endphp
         <tr>
             <th colspan="3">TOTAL</th>

@@ -34,7 +34,7 @@ class PDFController extends Controller
         $bulan = $request->bulan;
         $tahun = $request->tahun;
         $date = mktime(0, 0, 0, $request->bulan, 1, $request->tahun);
-        $data   =   DB::select("SELECT a.*, b.*, c.*,d.*,e.*,f.*,g.*, h.*, i.*, j.*, k.*, l.*, m.*, n.*, o.*,p.*, q.*, r.*, s.*, t.*, u.*, v.*, w.*, x.*, y.*, z.*, aa.*, ab.*, ac.*, ad.*, ae.*, af.*,
+        $data   =   DB::select("SELECT a.*, b.*, c.*,d.*,e.*,f.*,g.*, h.*, i.*, j.*, k.*, l.*, m.*, n.*, o.*,p.*, q.*, r.*, s.*, t.*, u.*, v.*, w.*, x.*, y.*, z.*, aa.*, ab.*, ac.*, ad.*, ae.*, af.*, ag.*,
         (IFNULL(b.nominal1,0) + IFNULL(c.nominal2,0) + IFNULL(d.nominal3,0) + IFNULL(e.nominal4,0) + IFNULL(f.nominal5,0) + IFNULL(g.nominal6,0) + IFNULL(h.nominal7,0) + IFNULL(i.nominal8,0) + IFNULL(j.nominal9,0) + IFNULL(k.nominal10,0) + IFNULL(l.nominal11,0) + IFNULL(m.nominal12,0) + IFNULL(n.nominal13,0) + IFNULL(o.nominal14,0) + IFNULL(p.nominal15,0) + IFNULL(q.nominal16,0) + IFNULL(r.nominal17,0) + IFNULL(s.nominal18,0) + IFNULL(t.nominal19 ,0)+ IFNULL(u.nominal20,0) + IFNULL(v.nominal21,0) + IFNULL(w.nominal22,0) + IFNULL(x.nominal23,0) + IFNULL(y.nominal24,0) + IFNULL(z.nominal25,0) + IFNULL(aa.nominal26,0) + IFNULL(ab.nominal27,0) + IFNULL(ac.nominal28,0) + IFNULL(ad.nominal29,0) + IFNULL(ae.nominal30,0) + IFNULL(af.nominal31,0)) as total
         FROM
         (
@@ -42,7 +42,9 @@ class PDFController extends Controller
         warga.id as ida,
         warga.nama,
         rumah.nama as blok,
-        warga.norumah as nomor
+        warga.norumah as nomor,
+        warga.jimpitan as jim,
+        warga.deleted_at as deleted
         FROM
         warga
         INNER JOIN rumah ON warga.block = rumah.id
@@ -59,6 +61,8 @@ class PDFController extends Controller
         jimpitan
         where
         jimpitan.tanggal = ('$request->tahun-$request->bulan-1')
+        AND
+        jimpitan.deleted_at = null
         ) as b on a.ida = b.idb
         LEFT JOIN
         (
@@ -70,6 +74,8 @@ class PDFController extends Controller
         jimpitan
         where
         jimpitan.tanggal = ('$request->tahun-$request->bulan-2')
+        AND
+        jimpitan.deleted_at = null
         ) as c on a.ida = c.idc
         LEFT JOIN
         (
@@ -81,6 +87,8 @@ class PDFController extends Controller
         jimpitan
         where
         jimpitan.tanggal = ('$request->tahun-$request->bulan-3')
+        AND
+        jimpitan.deleted_at = null
         ) as d on a.ida = d.idd
         LEFT JOIN
         (
@@ -92,6 +100,8 @@ class PDFController extends Controller
         jimpitan
         where
         jimpitan.tanggal = ('$request->tahun-$request->bulan-4')
+        AND
+        jimpitan.deleted_at = null
         ) as e on a.ida = e.ide
         LEFT JOIN
         (
@@ -103,6 +113,8 @@ class PDFController extends Controller
         jimpitan
         where
         jimpitan.tanggal = ('$request->tahun-$request->bulan-5')
+        AND
+        jimpitan.deleted_at = null
         ) as f on a.ida = f.idf
         LEFT JOIN
         (
@@ -114,6 +126,8 @@ class PDFController extends Controller
         jimpitan
         where
         jimpitan.tanggal = ('$request->tahun-$request->bulan-6')
+        AND
+        jimpitan.deleted_at = null
         ) as g on a.ida = g.idg
         LEFT JOIN
         (
@@ -125,6 +139,8 @@ class PDFController extends Controller
         jimpitan
         where
         jimpitan.tanggal = ('$request->tahun-$request->bulan-7')
+        AND
+        jimpitan.deleted_at = null
         ) as h on a.ida = h.idh
         LEFT JOIN
         (
@@ -136,6 +152,8 @@ class PDFController extends Controller
         jimpitan
         where
         jimpitan.tanggal = ('$request->tahun-$request->bulan-8')
+        AND
+        jimpitan.deleted_at = null
         ) as i on a.ida = i.idi
         LEFT JOIN
         (
@@ -147,6 +165,8 @@ class PDFController extends Controller
         jimpitan
         where
         jimpitan.tanggal = ('$request->tahun-$request->bulan-9')
+        AND
+        jimpitan.deleted_at = null
         ) as j on a.ida = j.idj
         LEFT JOIN
         (
@@ -158,6 +178,8 @@ class PDFController extends Controller
         jimpitan
         where
         jimpitan.tanggal = ('$request->tahun-$request->bulan-10')
+        AND
+        jimpitan.deleted_at = null
         ) as k on a.ida = k.idk
         LEFT JOIN
         (
@@ -169,6 +191,8 @@ class PDFController extends Controller
         jimpitan
         where
         jimpitan.tanggal = ('$request->tahun-$request->bulan-11')
+        AND
+        jimpitan.deleted_at = null
         ) as l on a.ida = l.idl
         LEFT JOIN
         (
@@ -180,6 +204,8 @@ class PDFController extends Controller
         jimpitan
         where
         jimpitan.tanggal = ('$request->tahun-$request->bulan-12')
+        AND
+        jimpitan.deleted_at = null
         ) as m on a.ida = m.idm
         LEFT JOIN
         (
@@ -191,6 +217,8 @@ class PDFController extends Controller
         jimpitan
         where
         jimpitan.tanggal = ('$request->tahun-$request->bulan-13')
+        AND
+        jimpitan.deleted_at = null
         ) as n on a.ida = n.idn
         LEFT JOIN
         (
@@ -202,6 +230,8 @@ class PDFController extends Controller
         jimpitan
         where
         jimpitan.tanggal = ('$request->tahun-$request->bulan-14')
+        AND
+        jimpitan.deleted_at = null
         ) as o on a.ida = o.ido
         LEFT JOIN
         (
@@ -213,6 +243,8 @@ class PDFController extends Controller
         jimpitan
         where
         jimpitan.tanggal = ('$request->tahun-$request->bulan-15')
+        AND
+        jimpitan.deleted_at = null
         ) as p on a.ida = p.idp
         LEFT JOIN
         (
@@ -224,6 +256,8 @@ class PDFController extends Controller
         jimpitan
         where
         jimpitan.tanggal = ('$request->tahun-$request->bulan-16')
+        AND
+        jimpitan.deleted_at = null
         ) as q on a.ida = q.idq
         LEFT JOIN
         (
@@ -235,6 +269,8 @@ class PDFController extends Controller
         jimpitan
         where
         jimpitan.tanggal = ('$request->tahun-$request->bulan-17')
+        AND
+        jimpitan.deleted_at = null
         ) as r on a.ida = r.idr
         LEFT JOIN
         (
@@ -246,6 +282,8 @@ class PDFController extends Controller
         jimpitan
         where
         jimpitan.tanggal = ('$request->tahun-$request->bulan-18')
+        AND
+        jimpitan.deleted_at = null
         ) as s on a.ida = s.ids
         LEFT JOIN
         (
@@ -257,6 +295,8 @@ class PDFController extends Controller
         jimpitan
         where
         jimpitan.tanggal = ('$request->tahun-$request->bulan-19')
+        AND
+        jimpitan.deleted_at = null
         ) as t on a.ida = t.idt
         LEFT JOIN
         (
@@ -268,6 +308,8 @@ class PDFController extends Controller
         jimpitan
         where
         jimpitan.tanggal = ('$request->tahun-$request->bulan-20')
+        AND
+        jimpitan.deleted_at = null
         ) as u on a.ida = u.idu
         LEFT JOIN
         (
@@ -279,6 +321,8 @@ class PDFController extends Controller
         jimpitan
         where
         jimpitan.tanggal = ('$request->tahun-$request->bulan-21')
+        AND
+        jimpitan.deleted_at = null
         ) as v on a.ida = v.idv
         LEFT JOIN
         (
@@ -290,6 +334,8 @@ class PDFController extends Controller
         jimpitan
         where
         jimpitan.tanggal = ('$request->tahun-$request->bulan-22')
+        AND
+        jimpitan.deleted_at = null
         ) as w on a.ida = w.idw
         LEFT JOIN
         (
@@ -301,6 +347,8 @@ class PDFController extends Controller
         jimpitan
         where
         jimpitan.tanggal = ('$request->tahun-$request->bulan-23')
+        AND
+        jimpitan.deleted_at = null
         ) as x on a.ida = x.idx
         LEFT JOIN
         (
@@ -312,6 +360,8 @@ class PDFController extends Controller
         jimpitan
         where
         jimpitan.tanggal = ('$request->tahun-$request->bulan-24')
+        AND
+        jimpitan.deleted_at = null
         ) as y on a.ida = y.idy
         LEFT JOIN
         (
@@ -323,6 +373,8 @@ class PDFController extends Controller
         jimpitan
         where
         jimpitan.tanggal = ('$request->tahun-$request->bulan-25')
+        AND
+        jimpitan.deleted_at = null
         ) as z on a.ida = z.idz
         LEFT JOIN
         (
@@ -334,6 +386,8 @@ class PDFController extends Controller
         jimpitan
         where
         jimpitan.tanggal = ('$request->tahun-$request->bulan-26')
+        AND
+        jimpitan.deleted_at = null
         ) as aa on a.ida = aa.idaa
         LEFT JOIN
         (
@@ -345,6 +399,8 @@ class PDFController extends Controller
         jimpitan
         where
         jimpitan.tanggal = ('$request->tahun-$request->bulan-27')
+        AND
+        jimpitan.deleted_at = null
         ) as ab on a.ida = ab.idab
         LEFT JOIN
         (
@@ -356,6 +412,8 @@ class PDFController extends Controller
         jimpitan
         where
         jimpitan.tanggal = ('$request->tahun-$request->bulan-28')
+        AND
+        jimpitan.deleted_at = null
         ) as ac on a.ida = ac.idac
         LEFT JOIN
         (
@@ -367,6 +425,8 @@ class PDFController extends Controller
         jimpitan
         where
         jimpitan.tanggal = DATE(IFNULL('$request->tahun-$request->bulan-29',NULL))
+        AND
+        jimpitan.deleted_at = null
         ) as ad on a.ida = ad.idad
         LEFT JOIN
         (
@@ -378,6 +438,8 @@ class PDFController extends Controller
         jimpitan
         where
         jimpitan.tanggal = DATE(IFNULL('$request->tahun-$request->bulan-30',NULL))
+        AND
+        jimpitan.deleted_at = null
         ) as ae on a.ida = ae.idae
         LEFT JOIN
         (SELECT 
@@ -388,7 +450,23 @@ class PDFController extends Controller
         jimpitan
         where
         jimpitan.tanggal =  DATE(IFNULL('$request->tahun-$request->bulan-31',NULL))
+        AND
+        jimpitan.deleted_at = null
         )as af on a.ida = af.idaf
+        LEFT JOIN
+        (SELECT 
+        jimpitanbulanan.idwarga AS idag,
+		jimpitanbulanan.bulan AS bulanan,
+		jimpitanbulanan.tahun AS tahun,
+		jimpitanbulanan.nominal as nominalbulan,
+        jimpitanbulanan.deleted_at as del
+        FROM
+        jimpitanbulanan
+        WHERE
+        jimpitanbulanan.bulan = ('$request->bulan') 
+        AND
+        jimpitanbulanan.tahun = ('$request->tahun')
+        )as ag on a.ida = ag.idag
         ORDER BY
         a.blok,
         a.nomor");
