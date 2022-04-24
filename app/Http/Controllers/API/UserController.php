@@ -135,20 +135,20 @@ class UserController extends Controller
             ->groupBy('jimpitan.warga')
             ->sum('nominal');
         
-        // $piutangbulan = Bulanan::join('warga', 'jimpitanbulanan.idwarga', '=', 'warga.id')
-        //     ->where('jimpitanbulanan.bulan', $bulan)
-        //     ->where('jimpitanbulanan.tahun', $tahun)
-        //     ->where('jimpitan.warga', $user->idwarga)
-        //     // ->where('warga.jimpitan', 2)
-        //     ->groupBy('jimpitanbulanan.idwarga')
-        //     ->sum('nominal');
+        $piutangbulan = Bulanan::join('warga', 'jimpitanbulanan.idwarga', '=', 'warga.id')
+            ->where('jimpitanbulanan.bulan', $bulan)
+            ->where('jimpitanbulanan.tahun', $tahun)
+            ->where('jimpitanbulan.idwarga', $user->idwarga)
+            // ->where('warga.jimpitan', 2)
+            ->groupBy('jimpitanbulanan.idwarga')
+            ->sum('nominal');
             
         $count = cal_days_in_month(CAL_GREGORIAN, $bulan, $tahun);
         $total = ($count * 500) - $piutang;
-        // $totalbulan = 15000 - $piutangbulan;
+        $totalbulan = 15000 - $piutangbulan;
         // $data   =   array('data' => $jimpitan, 'userjim' => $userjimpit);
 
-        return response()->json(['warga' => $warga, 'data' => $jimpitan, 'userjim' => $userjimpit, 'jimhari' => $jimpithari, 'jimbulan' => $jimpitbulan, 'piutang' => $total], $this->successStatus);
+        return response()->json(['warga' => $warga, 'data' => $jimpitan, 'userjim' => $userjimpit, 'jimhari' => $jimpithari, 'jimbulan' => $jimpitbulan, 'piutang' => $total, 'piutangbulan' => $totalbulan], $this->successStatus);
     }
 
     public function riwayatjimpit($id)
