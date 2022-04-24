@@ -135,20 +135,20 @@ class UserController extends Controller
             ->groupBy('jimpitan.warga')
             ->sum('nominal');
         
-        $piutangbulan = Bulanan::join('warga', 'jimpitanbulanan.idwarga', '=', 'warga.id')
-            ->where('jimpitanbulanan.bulan', $bulan)
-            ->where('jimpitanbulanan.tahun', $tahun)
-            ->where('jimpitan.warga', $user->idwarga)
-            // ->where('warga.jimpitan', 2)
-            ->groupBy('jimpitanbulanan.idwarga')
-            ->sum('nominal');
+        // $piutangbulan = Bulanan::join('warga', 'jimpitanbulanan.idwarga', '=', 'warga.id')
+        //     ->where('jimpitanbulanan.bulan', $bulan)
+        //     ->where('jimpitanbulanan.tahun', $tahun)
+        //     ->where('jimpitan.warga', $user->idwarga)
+        //     // ->where('warga.jimpitan', 2)
+        //     ->groupBy('jimpitanbulanan.idwarga')
+        //     ->sum('nominal');
             
         $count = cal_days_in_month(CAL_GREGORIAN, $bulan, $tahun);
         $total = ($count * 500) - $piutang;
-        $totalbulan = 15000 - $piutangbulan;
+        // $totalbulan = 15000 - $piutangbulan;
         // $data   =   array('data' => $jimpitan, 'userjim' => $userjimpit);
 
-        return response()->json(['warga' => $warga, 'data' => $jimpitan, 'userjim' => $userjimpit, 'jimhari' => $jimpithari, 'jimbulan' => $jimpitbulan, 'piutang' => $total, 'piutangbulan' => $totalbulan], $this->successStatus);
+        return response()->json(['warga' => $warga, 'data' => $jimpitan, 'userjim' => $userjimpit, 'jimhari' => $jimpithari, 'jimbulan' => $jimpitbulan, 'piutang' => $total], $this->successStatus);
     }
 
     public function riwayatjimpit($id)
@@ -165,17 +165,17 @@ class UserController extends Controller
                             ->orderBy('jimpitan.tanggal')
                             ->get();
 
-        $bulan   =   Bulanan::select('jimpitanbulanan.nominal', 'jimpitanbulanan.bulan', 'users.name')
-                            ->join('warga', 'jimpitan.warga', '=', 'warga.id')
-                            ->join('users', 'jimpitan.user', '=', 'users.id')
-                            ->where('jimpitanbulanan.tahun', Carbon::now()->year)
-                            ->where('jimpitanbulanan.bulan', Carbon::now()->month)
-                            ->where('warga', $user->idwarga)
-                            // ->where('warga.jimpitan', 2)
-                            ->orderBy('jimpitanbulanan.bulan')
-                            ->get();
+        // $bulan   =   Bulanan::select('jimpitanbulanan.nominal', 'jimpitanbulanan.bulan', 'users.name')
+        //                     ->join('warga', 'jimpitan.warga', '=', 'warga.id')
+        //                     ->join('users', 'jimpitan.user', '=', 'users.id')
+        //                     ->where('jimpitanbulanan.tahun', Carbon::now()->year)
+        //                     ->where('jimpitanbulanan.bulan', Carbon::now()->month)
+        //                     ->where('warga', $user->idwarga)
+        //                     // ->where('warga.jimpitan', 2)
+        //                     ->orderBy('jimpitanbulanan.bulan')
+        //                     ->get();
 
-        return response()->json(['data' => $data, 'warga' => $warga, 'bulan' => $bulan]);
+        return response()->json(['data' => $data, 'warga' => $warga]);
     }
 
     public function storetoken(Request $request)
