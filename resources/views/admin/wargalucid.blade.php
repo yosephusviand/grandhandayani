@@ -41,9 +41,11 @@
                                 <option value="1">Harian</option>
                                 <option value="2">Bulanan</option>
                             </select>
-                            @error("jimpitan") <div class="small text-danger">{{ message }}</div> @enderror
+                            @error('jimpitan')
+                                <div class="small text-danger">{{ message }}</div>
+                            @enderror
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="">Status</label>
                             <select name="status" class="form-control" id="status" required>
@@ -112,8 +114,10 @@
                                         <td>
                                             @if ($val->jimpitan == 1)
                                                 <span class="badge badge-primary">Harian</span>
-                                            @else
+                                            @elseif($val->jimpitan == 2)
                                                 <span class="badge badge-info">Bulanan</span>
+                                            @else
+                                                
                                             @endif
                                         </td>
                                         <td>
