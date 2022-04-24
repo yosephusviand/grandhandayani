@@ -27,7 +27,9 @@
                             <select name="warga" class="form-control select2" id="warga" required>
                                 <option value="" disabled selected hidden>Pilih </option>
                                 @foreach ($warga as $val)
-                                    <option value="{{ $val->id }}">{{ $val->nama }}</option>
+                                    <option value="{{ $val->id }}">{{ $val->to_rumah->nama }}-{{ $val->norumah }}
+                                        {{ $val->nama }}
+                                    </option>
                                 @endforeach
                             </select>
                             @error('warga')
