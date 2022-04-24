@@ -130,7 +130,9 @@ if ($bulan == 1) {
                     $tagihan = 0;
                 } elseif ($val->jim == 1) {
                     $tagihan = $e * 500 - $val->total;
-                } elseif ($val->jim == 2) {
+                } elseif ($val->jim == 2 && $val->del == null) {
+                    $tagihan = 15000 - $val->nominalbulan;
+                } elseif ($val->jim == 2 && $val->del != null) {
                     $tagihan = $val->nominalbulan;
                 }
                 $tag += $tagihan;
@@ -139,11 +141,11 @@ if ($bulan == 1) {
                 <td>{{ ++$i }}</td>
                 <td>{{ $val->nama }}
                     @if ($val->deleted)
-                        {{ ' (Deleted)' }}
+                        <strong>{{ ' (Deleted)' }}</strong>
                     @endif
                 </td>
                 <td>{{ $val->blok . ' ' . $val->nomor }}</td>
-                @if ($val->jim == 1 and $val->deleted == null)
+                @if ($val->jim == 1)
                     <td>{{ $val->nominal1 ?? '' }}</td>
                     <td>{{ $val->nominal2 ?? '' }}</td>
                     <td>{{ $val->nominal3 ?? '' }}</td>

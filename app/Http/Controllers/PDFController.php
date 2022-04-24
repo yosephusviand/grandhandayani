@@ -56,402 +56,371 @@ class PDFController extends Controller
         SELECT
         jimpitan.warga as idb,
         jimpitan.tanggal as tanggal1,
-        jimpitan.nominal as nominal1
+        jimpitan.nominal as nominal1,
+        jimpitan.deleted_at as deljim
         FROM
         jimpitan
         where
         jimpitan.tanggal = ('$request->tahun-$request->bulan-1')
-        AND
-        jimpitan.deleted_at = null
         ) as b on a.ida = b.idb
         LEFT JOIN
         (
         SELECT
         jimpitan.warga as idc,
         jimpitan.tanggal as tanggal2,
-        jimpitan.nominal as nominal2
+        jimpitan.nominal as nominal2,
+        jimpitan.deleted_at as deljim
         FROM
         jimpitan
         where
         jimpitan.tanggal = ('$request->tahun-$request->bulan-2')
-        AND
-        jimpitan.deleted_at = null
         ) as c on a.ida = c.idc
         LEFT JOIN
         (
         SELECT
         jimpitan.warga as idd,
         jimpitan.tanggal as tanggal3,
-        jimpitan.nominal as nominal3
+        jimpitan.nominal as nominal3,
+        jimpitan.deleted_at as deljim
         FROM
         jimpitan
         where
         jimpitan.tanggal = ('$request->tahun-$request->bulan-3')
-        AND
-        jimpitan.deleted_at = null
         ) as d on a.ida = d.idd
         LEFT JOIN
         (
         SELECT
         jimpitan.warga as ide,
         jimpitan.tanggal as tanggal4,
-        jimpitan.nominal as nominal4
+        jimpitan.nominal as nominal4,
+        jimpitan.deleted_at as deljim
         FROM
         jimpitan
         where
         jimpitan.tanggal = ('$request->tahun-$request->bulan-4')
-        AND
-        jimpitan.deleted_at = null
         ) as e on a.ida = e.ide
         LEFT JOIN
         (
         SELECT
         jimpitan.warga as idf,
         jimpitan.tanggal as tanggal5,
-        jimpitan.nominal as nominal5
+        jimpitan.nominal as nominal5,
+        jimpitan.deleted_at as deljim
         FROM
         jimpitan
         where
         jimpitan.tanggal = ('$request->tahun-$request->bulan-5')
-        AND
-        jimpitan.deleted_at = null
         ) as f on a.ida = f.idf
         LEFT JOIN
         (
         SELECT
         jimpitan.warga as idg,
         jimpitan.tanggal as tanggal6,
-        jimpitan.nominal as nominal6
+        jimpitan.nominal as nominal6,
+        jimpitan.deleted_at as deljim
         FROM
         jimpitan
         where
         jimpitan.tanggal = ('$request->tahun-$request->bulan-6')
-        AND
-        jimpitan.deleted_at = null
         ) as g on a.ida = g.idg
         LEFT JOIN
         (
         SELECT
         jimpitan.warga as idh,
         jimpitan.tanggal as tanggal7,
-        jimpitan.nominal as nominal7
+        jimpitan.nominal as nominal7,
+        jimpitan.deleted_at as deljim
         FROM
         jimpitan
         where
         jimpitan.tanggal = ('$request->tahun-$request->bulan-7')
-        AND
-        jimpitan.deleted_at = null
         ) as h on a.ida = h.idh
         LEFT JOIN
         (
         SELECT
         jimpitan.warga as idi,
         jimpitan.tanggal as tanggal8,
-        jimpitan.nominal as nominal8
+        jimpitan.nominal as nominal8,
+        jimpitan.deleted_at as deljim
         FROM
         jimpitan
         where
         jimpitan.tanggal = ('$request->tahun-$request->bulan-8')
-        AND
-        jimpitan.deleted_at = null
         ) as i on a.ida = i.idi
         LEFT JOIN
         (
         SELECT
         jimpitan.warga as idj,
         jimpitan.tanggal as tanggal9,
-        jimpitan.nominal as nominal9
+        jimpitan.nominal as nominal9,
+        jimpitan.deleted_at as deljim
         FROM
         jimpitan
         where
         jimpitan.tanggal = ('$request->tahun-$request->bulan-9')
-        AND
-        jimpitan.deleted_at = null
         ) as j on a.ida = j.idj
         LEFT JOIN
         (
         SELECT
         jimpitan.warga as idk,
         jimpitan.tanggal as tanggal10,
-        jimpitan.nominal as nominal10
+        jimpitan.nominal as nominal10,
+        jimpitan.deleted_at as deljim
         FROM
         jimpitan
         where
         jimpitan.tanggal = ('$request->tahun-$request->bulan-10')
-        AND
-        jimpitan.deleted_at = null
         ) as k on a.ida = k.idk
         LEFT JOIN
         (
         SELECT
         jimpitan.warga as idl,
         jimpitan.tanggal as tanggal11,
-        jimpitan.nominal as nominal11
+        jimpitan.nominal as nominal11,
+        jimpitan.deleted_at as deljim
         FROM
         jimpitan
         where
         jimpitan.tanggal = ('$request->tahun-$request->bulan-11')
-        AND
-        jimpitan.deleted_at = null
         ) as l on a.ida = l.idl
         LEFT JOIN
         (
         SELECT
         jimpitan.warga as idm,
         jimpitan.tanggal as tanggal12,
-        jimpitan.nominal as nominal12
+        jimpitan.nominal as nominal12,
+        jimpitan.deleted_at as deljim
         FROM
         jimpitan
         where
         jimpitan.tanggal = ('$request->tahun-$request->bulan-12')
-        AND
-        jimpitan.deleted_at = null
         ) as m on a.ida = m.idm
         LEFT JOIN
         (
         SELECT
         jimpitan.warga as idn,
         jimpitan.tanggal as tanggal13,
-        jimpitan.nominal as nominal13
+        jimpitan.nominal as nominal13,
+        jimpitan.deleted_at as deljim
         FROM
         jimpitan
         where
         jimpitan.tanggal = ('$request->tahun-$request->bulan-13')
-        AND
-        jimpitan.deleted_at = null
         ) as n on a.ida = n.idn
         LEFT JOIN
         (
         SELECT
         jimpitan.warga as ido,
         jimpitan.tanggal as tanggal14,
-        jimpitan.nominal as nominal14
+        jimpitan.nominal as nominal14,
+        jimpitan.deleted_at as deljim
         FROM
         jimpitan
         where
         jimpitan.tanggal = ('$request->tahun-$request->bulan-14')
-        AND
-        jimpitan.deleted_at = null
         ) as o on a.ida = o.ido
         LEFT JOIN
         (
         SELECT
         jimpitan.warga as idp,
         jimpitan.tanggal as tanggal15,
-        jimpitan.nominal as nominal15
+        jimpitan.nominal as nominal15,
+        jimpitan.deleted_at as deljim
         FROM
         jimpitan
         where
         jimpitan.tanggal = ('$request->tahun-$request->bulan-15')
-        AND
-        jimpitan.deleted_at = null
         ) as p on a.ida = p.idp
         LEFT JOIN
         (
         SELECT
         jimpitan.warga as idq,
         jimpitan.tanggal as tanggal16,
-        jimpitan.nominal as nominal16
+        jimpitan.nominal as nominal16,
+        jimpitan.deleted_at as deljim
         FROM
         jimpitan
         where
         jimpitan.tanggal = ('$request->tahun-$request->bulan-16')
-        AND
-        jimpitan.deleted_at = null
         ) as q on a.ida = q.idq
         LEFT JOIN
         (
         SELECT
         jimpitan.warga as idr,
         jimpitan.tanggal as tanggal17,
-        jimpitan.nominal as nominal17
+        jimpitan.nominal as nominal17,
+        jimpitan.deleted_at as deljim
         FROM
         jimpitan
         where
         jimpitan.tanggal = ('$request->tahun-$request->bulan-17')
-        AND
-        jimpitan.deleted_at = null
         ) as r on a.ida = r.idr
         LEFT JOIN
         (
         SELECT
         jimpitan.warga as ids,
         jimpitan.tanggal as tanggal18,
-        jimpitan.nominal as nominal18
+        jimpitan.nominal as nominal18,
+        jimpitan.deleted_at as deljim
         FROM
         jimpitan
         where
         jimpitan.tanggal = ('$request->tahun-$request->bulan-18')
-        AND
-        jimpitan.deleted_at = null
         ) as s on a.ida = s.ids
         LEFT JOIN
         (
         SELECT
         jimpitan.warga as idt,
         jimpitan.tanggal as tanggal19,
-        jimpitan.nominal as nominal19
+        jimpitan.nominal as nominal19,
+        jimpitan.deleted_at as deljim
         FROM
         jimpitan
         where
         jimpitan.tanggal = ('$request->tahun-$request->bulan-19')
-        AND
-        jimpitan.deleted_at = null
         ) as t on a.ida = t.idt
         LEFT JOIN
         (
         SELECT
         jimpitan.warga as idu,
         jimpitan.tanggal as tanggal20,
-        jimpitan.nominal as nominal20
+        jimpitan.nominal as nominal20,
+        jimpitan.deleted_at as deljim
         FROM
         jimpitan
         where
         jimpitan.tanggal = ('$request->tahun-$request->bulan-20')
-        AND
-        jimpitan.deleted_at = null
         ) as u on a.ida = u.idu
         LEFT JOIN
         (
         SELECT
         jimpitan.warga as idv,
         jimpitan.tanggal as tanggal21,
-        jimpitan.nominal as nominal21
+        jimpitan.nominal as nominal21,
+        jimpitan.deleted_at as deljim
         FROM
         jimpitan
         where
         jimpitan.tanggal = ('$request->tahun-$request->bulan-21')
-        AND
-        jimpitan.deleted_at = null
         ) as v on a.ida = v.idv
         LEFT JOIN
         (
         SELECT
         jimpitan.warga as idw,
         jimpitan.tanggal as tanggal22,
-        jimpitan.nominal as nominal22
+        jimpitan.nominal as nominal22,
+        jimpitan.deleted_at as deljim
         FROM
         jimpitan
         where
         jimpitan.tanggal = ('$request->tahun-$request->bulan-22')
-        AND
-        jimpitan.deleted_at = null
         ) as w on a.ida = w.idw
         LEFT JOIN
         (
         SELECT
         jimpitan.warga as idx,
         jimpitan.tanggal as tanggal23,
-        jimpitan.nominal as nominal23
+        jimpitan.nominal as nominal23,
+        jimpitan.deleted_at as deljim
         FROM
         jimpitan
         where
         jimpitan.tanggal = ('$request->tahun-$request->bulan-23')
-        AND
-        jimpitan.deleted_at = null
         ) as x on a.ida = x.idx
         LEFT JOIN
         (
         SELECT
         jimpitan.warga as idy,
         jimpitan.tanggal as tanggal24,
-        jimpitan.nominal as nominal24
+        jimpitan.nominal as nominal24,
+        jimpitan.deleted_at as deljim
         FROM
         jimpitan
         where
         jimpitan.tanggal = ('$request->tahun-$request->bulan-24')
-        AND
-        jimpitan.deleted_at = null
         ) as y on a.ida = y.idy
         LEFT JOIN
         (
         SELECT
         jimpitan.warga as idz,
         jimpitan.tanggal as tanggal25,
-        jimpitan.nominal as nominal25
+        jimpitan.nominal as nominal25,
+        jimpitan.deleted_at as deljim
         FROM
         jimpitan
         where
         jimpitan.tanggal = ('$request->tahun-$request->bulan-25')
-        AND
-        jimpitan.deleted_at = null
         ) as z on a.ida = z.idz
         LEFT JOIN
         (
         SELECT
         jimpitan.warga as idaa,
         jimpitan.tanggal as tanggal26,
-        jimpitan.nominal as nominal26
+        jimpitan.nominal as nominal26,
+        jimpitan.deleted_at as deljim
         FROM
         jimpitan
         where
         jimpitan.tanggal = ('$request->tahun-$request->bulan-26')
-        AND
-        jimpitan.deleted_at = null
         ) as aa on a.ida = aa.idaa
         LEFT JOIN
         (
         SELECT
         jimpitan.warga as idab,
         jimpitan.tanggal as tanggal27,
-        jimpitan.nominal as nominal27
+        jimpitan.nominal as nominal27,
+        jimpitan.deleted_at as deljim
         FROM
         jimpitan
         where
         jimpitan.tanggal = ('$request->tahun-$request->bulan-27')
-        AND
-        jimpitan.deleted_at = null
         ) as ab on a.ida = ab.idab
         LEFT JOIN
         (
         SELECT
         jimpitan.warga as idac,
         jimpitan.tanggal as tanggal28,
-        jimpitan.nominal as nominal28
+        jimpitan.nominal as nominal28,
+        jimpitan.deleted_at as deljim
         FROM
         jimpitan
         where
         jimpitan.tanggal = ('$request->tahun-$request->bulan-28')
-        AND
-        jimpitan.deleted_at = null
         ) as ac on a.ida = ac.idac
         LEFT JOIN
         (
         SELECT
         jimpitan.warga as idad,
         jimpitan.tanggal as tanggal29,
-        jimpitan.nominal as nominal29
+        jimpitan.nominal as nominal29,
+        jimpitan.deleted_at as deljim
         FROM
         jimpitan
         where
         jimpitan.tanggal = DATE(IFNULL('$request->tahun-$request->bulan-29',NULL))
-        AND
-        jimpitan.deleted_at = null
         ) as ad on a.ida = ad.idad
         LEFT JOIN
         (
         SELECT
         jimpitan.warga as idae,
         jimpitan.tanggal as tanggal30,
-        jimpitan.nominal as nominal30
+        jimpitan.nominal as nominal30,
+        jimpitan.deleted_at as deljim
         FROM
         jimpitan
         where
         jimpitan.tanggal = DATE(IFNULL('$request->tahun-$request->bulan-30',NULL))
-        AND
-        jimpitan.deleted_at = null
         ) as ae on a.ida = ae.idae
         LEFT JOIN
         (SELECT 
         jimpitan.warga as idaf,
         jimpitan.tanggal as tanggal31,
-        jimpitan.nominal as nominal31
+        jimpitan.nominal as nominal31,
+        jimpitan.deleted_at as deljim
         FROM
         jimpitan
         where
         jimpitan.tanggal =  DATE(IFNULL('$request->tahun-$request->bulan-31',NULL))
-        AND
-        jimpitan.deleted_at = null
         )as af on a.ida = af.idaf
         LEFT JOIN
         (SELECT 
