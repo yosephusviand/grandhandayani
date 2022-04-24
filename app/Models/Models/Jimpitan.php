@@ -25,15 +25,21 @@ class Jimpitan extends Model
 
     public static function sumbulan()
     {
-        return Jimpitan::whereYear('tanggal', date('Y'))->whereMonth('tanggal', date('m'))->sum('nominal');
+        $harian =   Jimpitan::whereYear('tanggal', date('Y'))->whereMonth('tanggal', date('m'))->sum('nominal');
+        $bulan  =   Bulanan::where('tahun', date('Y'))->where('bulan', date('m'))->sum('nominal');
+        return $harian + $bulan;
     }
     public static function sumtahun()
     {
-        return Jimpitan::whereYear('tanggal', date('Y'))->sum('nominal');
+        $harian =   Jimpitan::whereYear('tanggal', date('Y'))->sum('nominal');
+        $bulan  =   Bulanan::where('tahun', date('Y'))->sum('nominal');
+        return $harian + $bulan;
     }
     public static function sumtotal()
     {
-        return Jimpitan::sum('nominal');
+        $harian =   Jimpitan::sum('nominal');
+        $bulan  =   Bulanan::sum('nominal');
+        return $harian + $bulan;
     }
 
 }
