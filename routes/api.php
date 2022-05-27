@@ -20,7 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 Route::post('v2/login', [\App\Http\Controllers\API\UserController::class, 'login']);
-Route::post('v2/login', [\App\Http\Controllers\API\UserController::class, 'login']);
+Route::post('v3/login', [\App\Http\Controllers\API\UserController::class, 'login']);
 Route::post('loginmobsi', [\App\Http\Controllers\API\MobsiController::class, 'login']);
 // Route::post('login-update', [\App\Http\Controllers\API\UserController::class, 'login']);
 Route::post('register', [\App\Http\Controllers\API\UserController::class, 'register']);
