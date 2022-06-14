@@ -56,6 +56,6 @@ Route::group(['middleware' => 'auth:api'], function () {
     // Route::post('jimpitan-update',[\App\Http\Controllers\API\QrcodeController::class,'store']);
     // Route::post('storetoken-update', [\App\Http\Controllers\API\UserController::class, 'storetoken']);
 
+    Route::post('mobsi', [App\Http\Controllers\API\MobsiController::class, 'curlget']);
 });
-Route::get('mobsi/{devid}', [App\Http\Controllers\API\MobsiController::class, 'curlget']);
 
