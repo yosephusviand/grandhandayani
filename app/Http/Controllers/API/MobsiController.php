@@ -24,21 +24,26 @@ class MobsiController extends Controller
 
     public function curlget(Request $request)
     {
-        $curl = curl_init();
-
-        curl_setopt_array($curl, array(
-            CURLOPT_URL => "https://mpresensi.gunungkidulkab.go.id/api/index.php/cekdevice/". $request->devid,
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_ENCODING => "",
-            CURLOPT_TIMEOUT => 30000,
-            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-            CURLOPT_CUSTOMREQUEST => "GET",
-            CURLOPT_SSL_VERIFYPEER => false,
-            CURLOPT_HTTPHEADER => array(
-                // Set Here Your Requesred Headers
-                'Content-Type: application/json',
-            ),
-        ));
+        $curl   = curl_init();
+        $url    = "https://mpresensi.gunungkidulkab.go.id/api/index.php/cekdevice/". $request->devid;
+        curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_FAILONERROR, true);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "GET");
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+        // curl_setopt_array($curl, array(
+        //     CURLOPT_URL => "https://mpresensi.gunungkidulkab.go.id/api/index.php/cekdevice/". $request->devid,
+        //     CURLOPT_RETURNTRANSFER => true,
+        //     CURLOPT_ENCODING => "",
+        //     CURLOPT_TIMEOUT => 30000,
+        //     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        //     CURLOPT_CUSTOMREQUEST => "GET",
+        //     CURLOPT_SSL_VERIFYPEER => false,
+        //     CURLOPT_HTTPHEADER => array(
+        //         // Set Here Your Requesred Headers
+        //         'Content-Type: application/json',
+        //     ),
+        // ));
 
         // curl_setopt_array($curl, array(
         //     CURLOPT_URL => "https://mpresensi.gunungkidulkab.go.id/api/index.php/presensi/"+nip+"/"+tipe+"/"+latlon+"/"+jarak+"/-/"+token,
