@@ -62,7 +62,8 @@ class MobsiController extends Controller
         $err = curl_error($curl);
         curl_close($curl);
         if ($err) {
-            echo "cURL Error #:" . $err;
+            // echo "cURL Error #:" . $err;
+            return response($err);
         } else {
             $data = json_decode($response, true);
             return response($data);
