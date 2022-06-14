@@ -24,22 +24,21 @@ class MobsiController extends Controller
 
     public function curlget(Request $request)
     {
-        return response($request->devid);
-        // $curl = curl_init();
+        $curl = curl_init();
 
-        // curl_setopt_array($curl, array(
-        //     CURLOPT_URL => "https://mpresensi.gunungkidulkab.go.id/api/index.php/cekdevice/". $request->devid,
-        //     CURLOPT_RETURNTRANSFER => true,
-        //     CURLOPT_ENCODING => "",
-        //     CURLOPT_TIMEOUT => 30000,
-        //     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-        //     CURLOPT_CUSTOMREQUEST => "GET",
-        //     CURLOPT_SSL_VERIFYPEER => false,
-        //     CURLOPT_HTTPHEADER => array(
-        //         // Set Here Your Requesred Headers
-        //         'Content-Type: application/json',
-        //     ),
-        // ));
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "https://mpresensi.gunungkidulkab.go.id/api/index.php/cekdevice/". $request->devid,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_TIMEOUT => 30000,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "GET",
+            CURLOPT_SSL_VERIFYPEER => false,
+            CURLOPT_HTTPHEADER => array(
+                // Set Here Your Requesred Headers
+                'Content-Type: application/json',
+            ),
+        ));
 
         // curl_setopt_array($curl, array(
         //     CURLOPT_URL => "https://mpresensi.gunungkidulkab.go.id/api/index.php/presensi/"+nip+"/"+tipe+"/"+latlon+"/"+jarak+"/-/"+token,
@@ -59,15 +58,15 @@ class MobsiController extends Controller
         //         "content-type: application/json",
         //     ),
         // ));
-        // $response = curl_exec($curl);
-        // $err = curl_error($curl);
-        // curl_close($curl);
-        // if ($err) {
-        //     // echo "cURL Error #:" . $err;
-        //     return response($err);
-        // } else {
-        //     $data = json_decode($response, true);
-        //     return response($data);
-        // }
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+        curl_close($curl);
+        if ($err) {
+            // echo "cURL Error #:" . $err;
+            return response($err);
+        } else {
+            $data = json_decode($response, true);
+            return response($data);
+        }
     }
 }
